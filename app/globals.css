@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  /*색상 변수*/
+  --bg-main: #4d4d4d;
+}
