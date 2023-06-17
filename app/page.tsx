@@ -1,5 +1,9 @@
-import Sidebar from '@/components/sidebar/Sidebar';
+import Index from '@/components/index/Index';
 import styles from '@/styles/app/index.module.scss';
 export default function Home() {
-  return <main className={styles.main}>메인페이지</main>;
+  return (
+    <main className={styles.main}>
+      <Index />
+    </main>
+  );
 }

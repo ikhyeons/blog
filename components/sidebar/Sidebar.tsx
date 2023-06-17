@@ -1,4 +1,4 @@
-import styles from '@/styles/components/Sidebar.module.scss';
+import styles from '@/styles/components/layout/Sidebar.module.scss';
 import Profile from './Profile';
 import Bottom from './Bottom';
 import Category from './Category';

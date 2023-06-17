@@ -1,4 +1,4 @@
-import styles from '@/styles/components/Sidebar.module.scss';
+import styles from '@/styles/components/layout/Sidebar.module.scss';
 import { useState } from 'react';
 
 function Category() {
