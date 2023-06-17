@@ -1,10 +1,28 @@
+@font-face {
+  font-family: 'font1';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'font2';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   margin: 0;
   padding: 0px;
   box-sizing: border-box;
+  list-style: none;
+  font-family: font1;
 }
 
 :root {
   /*색상 변수*/
   --bg-main: #4d4d4d;
+  --bg-white: #fafafa;
+  --bg-header: #c0d4ff;
 }

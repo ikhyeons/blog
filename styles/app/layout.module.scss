@@ -1,0 +1,10 @@
+.main {
+  height: 100%;
+  margin-left: 270px;
+  background: var(--bg-main);
+  display: flex;
+  flex-direction: column;
+  .section {
+    flex: 1;
+  }
+}

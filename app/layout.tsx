@@ -1,3 +1,6 @@
+import Sidebar from '@/components/Sidebar';
+import Header from '@/components/Header';
+import styles from '@/styles/app/layout.module.scss';
 import './globals.css';
 
 export const metadata = {
@@ -8,7 +11,13 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body style={{ background: 'var(--bg-main)' }}>
+        <Sidebar />
+        <main className={styles.main}>
+          <Header />
+          <section className={styles.section}>{children}</section>
+        </main>
+      </body>
     </html>
   );
 }
