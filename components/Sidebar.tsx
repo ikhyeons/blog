@@ -4,11 +4,7 @@ function Sidebar() {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.profileBox}>
-        <img
-          className={styles.img}
-          src="http://www.bizhankook.com/upload/bk/article/202306/thumb/25803-62395-sampleM.jpg"
-          alt=""
-        />
+        <img className={styles.img} src="duckProfile.jpg" alt="" />
         <div className={styles.name}>잠자는오리</div>
         <div className={styles.subName}>DrowzyDuck</div>
         <span className={styles.visitor}>today 35</span>
