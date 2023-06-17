@@ -34,7 +34,7 @@ describe('Sidebar test', () => {
     const Ctg = screen.getByText('Category');
     expect(Ctg).toBeInTheDocument();
     // 카테고리 내용이 있어야 함. / 클릭 시 해당 카테고리 글 목록
-    const CtgTag = screen.getByText('공지사항');
+    const CtgTag = screen.getByText('공지');
     expect(CtgTag).toBeInTheDocument();
   });
 
