@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Header from '@/components/Header';
+import Header from '@/components/header/Header';
 
 describe('Header test', () => {
   it('is all component rendered?', () => {

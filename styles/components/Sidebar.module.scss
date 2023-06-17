@@ -18,10 +18,13 @@
       border-radius: 10px;
     }
     .name {
-      margin: 5px 0px;
+      margin-top: 5px;
       font-weight: bold;
     }
     .subName {
+      margin-bottom: 5px;
+    }
+    .email {
       margin: 5px 0px;
     }
     .visitor {
@@ -43,14 +46,43 @@
     margin-bottom: 40px;
   }
 
-  .resume {
-    font-size: 30px;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-
-  .sidebarbottom {
+  .sidebarBottom {
+    width: 250px;
     position: absolute;
     bottom: 10px;
+
+    .linkBox {
+      margin-bottom: 5px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .gitLink {
+        border-radius: 8px;
+        background: var(--bg-main);
+        width: 48%;
+        overflow: hidden;
+        color: white;
+        padding: 5px;
+      }
+      .resumeLink {
+        border-radius: 8px;
+        background: rgba($color: #86d486, $alpha: 1);
+        width: 48%;
+        overflow: hidden;
+        color: white;
+        padding: 5px;
+      }
+    }
+
+    .loginBtn {
+      cursor: pointer;
+      width: 100%;
+      background: var(--bg-header);
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+    }
   }
 }
