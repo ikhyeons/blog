@@ -6,5 +6,6 @@ describe('Header test', () => {
     render(<Header />);
 
     const header = screen.getByText('어서오세요!');
+    expect(header).toBeInTheDocument();
   });
 });
