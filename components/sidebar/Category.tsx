@@ -1,5 +1,4 @@
 import styles from '@/styles/components/layout/Sidebar.module.scss';
-import { useState } from 'react';
 
 function Category() {
   const ctgList = ctgListData();

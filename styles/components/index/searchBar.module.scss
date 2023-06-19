@@ -1,0 +1,31 @@
+.inputWrap {
+  width: 75%;
+  min-width: 330px;
+  display: flex;
+  padding: 5px 10px;
+  background: white;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+
+  .searchIcon {
+    color: black;
+    margin: 0 5px;
+    min-width: 20px;
+    min-height: 20px;
+  }
+  .searchInput {
+    width: 90%;
+    padding: 5px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .inputWrap {
+    width: 100%;
+  }
+}
