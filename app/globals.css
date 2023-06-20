@@ -1,17 +1,10 @@
 @font-face {
   font-family: 'font1';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2') format('woff2');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'font2';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2')
-    format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
 * {
   margin: 0;
   padding: 0px;
@@ -23,7 +16,11 @@
 
 :root {
   /*색상 변수*/
-  --bg-main: #4d4d4d;
-  --bg-white: #fafafa;
+  --bg-main: #232323;
+  --bg-sidebar: #2c2c2c;
   --bg-header: #ffdc17;
+
+  --bg-white: #f4f4f4;
+  --cl-white: #ffffff;
+  --cl-black: #000000;
 }

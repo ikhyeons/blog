@@ -6,6 +6,19 @@
   flex-direction: column;
   transition: margin 0.2s;
   .section {
+    margin-top: 70px;
+    flex: 1;
+  }
+}
+
+.resumeMain {
+  height: 100%;
+  background: var(--bg-main);
+  display: flex;
+  flex-direction: column;
+  transition: margin 0.2s;
+  .section {
+    margin-top: 70px;
     flex: 1;
   }
 }

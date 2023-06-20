@@ -5,4 +5,51 @@
     font-size: 25px;
     margin-bottom: 10px;
   }
+
+  .guestBookBox {
+    background: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    height: 165px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+
+    .inputBox {
+      display: flex;
+      width: 100%;
+
+      .inputName {
+        width: 102px;
+        padding: 3px;
+      }
+
+      .guestDoc {
+        flex: 1;
+        padding: 3px;
+      }
+    }
+    .guestDocList {
+      overflow: auto;
+      margin: 5px;
+
+      &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 3.5px;
+        background-color: var(--bg-header);
+      }
+      &::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0);
+      }
+
+      li {
+        margin-left: 5px;
+        margin-bottom: 8px;
+      }
+    }
+  }
 }

@@ -1,8 +1,23 @@
 .header {
+  z-index: 1;
+  transition: all 0.2s;
+  position: fixed;
+  width: 100%;
   background: var(--bg-header);
   height: 50px;
   justify-content: space-around;
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  .doc {
+    transform: translateX(-150%);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    .doc {
+      transform: translateX(0);
+    }
+  }
 }

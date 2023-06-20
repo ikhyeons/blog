@@ -1,0 +1,52 @@
+.docListWrap {
+  width: 100%;
+  margin-right: 10px;
+  margin-bottom: 40px;
+  .ctg {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  .docList {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 3.5px;
+      background: var(--bg-header);
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0);
+    }
+
+    .docCard {
+      border-radius: 10px;
+      padding: 10px;
+      display: block;
+      margin: 10px;
+      background: none;
+      color: black;
+      min-width: 280px;
+      height: 340px;
+      cursor: pointer;
+
+      .cardImg {
+        width: 260px;
+        height: 260px;
+        border-radius: 10px;
+      }
+      .cardTitle {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+        align-items: center;
+        color: white;
+      }
+    }
+  }
+}
