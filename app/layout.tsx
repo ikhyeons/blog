@@ -1,6 +1,8 @@
 import Sidebar from '@/components/sidebar/Sidebar';
 import Header from '@/components/header/Header';
 import styles from '@/styles/app/layout.module.scss';
+import ResumeHeader from '@/components/header/ResumeHeader';
+import { headers } from 'next/headers';
 import './globals.css';
 
 export const metadata = {
@@ -9,12 +11,22 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  function checkSidebar() {
+    const headersList = headers();
+    let header_url = (headersList.get('x-url') || '').replace('http://localhost:3000/', '');
+    let isSidebar = true;
+    if (header_url.split('/')[0] == 'resume' || header_url.split('/')[0] == 'user') {
+      isSidebar = false;
+    }
+    return isSidebar;
+  }
+
   return (
     <html lang="ko">
       <body style={{ background: 'var(--bg-main)' }}>
-        <Sidebar />
-        <main className={styles.main}>
-          <Header />
+        {checkSidebar() ? <Sidebar /> : null}
+        <main className={checkSidebar() ? styles.main : styles.resumeMain}>
+          {checkSidebar() ? <Header /> : <ResumeHeader />}
           <section className={styles.section}>{children}</section>
         </main>
       </body>
