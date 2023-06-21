@@ -18,6 +18,13 @@
   }
 }
 
+a {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: white;
+}
+
 :root {
   /*색상 변수*/
   --bg-main: #232323;
