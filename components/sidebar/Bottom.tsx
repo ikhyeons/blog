@@ -7,7 +7,7 @@ function Bottom() {
         <Link href={'https://github.com/ikhyeons'} target="_blank" className={styles.gitLink}>
           GitHub : https://github.com/ikhyeons
         </Link>
-        <Link href={'http://localhost:3000/resume'} target="_blank" className={styles.resumeLink}>
+        <Link href={'/resume'} target="_blank" className={styles.resumeLink}>
           resume
         </Link>
       </div>
