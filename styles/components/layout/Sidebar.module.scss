@@ -7,14 +7,15 @@
   display: flex;
   flex-direction: column;
   color: var(--cl-white);
+
   .profileBox {
     text-align: center;
     margin: 25px auto;
 
     .img {
       background: none;
-      width: 130px;
-      height: 150px;
+      width: 180px;
+      height: 200px;
       border-radius: 10px;
     }
     .name {
@@ -56,12 +57,12 @@
     cursor: pointer;
 
     &:hover {
-      box-shadow: 2px 0px 1px rgb(103, 103, 103);
+      box-shadow: 2px 0px 1px var(--highlight);
       transform: translate(25px, 0px);
     }
     &:active {
       box-shadow: none;
-      box-shadow: 2px 0px 4px rgb(103, 103, 103);
+      box-shadow: 1px 0px 4px rgb(255, 162, 162);
       transform: translate(0, 0);
     }
   }

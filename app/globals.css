@@ -12,6 +12,10 @@
   list-style: none;
   font-family: font1;
   user-select: none;
+
+  input {
+    font-family: font1;
+  }
 }
 
 :root {
