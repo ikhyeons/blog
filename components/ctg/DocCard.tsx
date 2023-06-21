@@ -10,7 +10,7 @@ function DocCard() {
           <img className={styles.thumnail} src="" alt="썸네일" />
           <article>
             <p className={styles.title}>제목</p>
-            <p>내용 요약 본</p>
+            <p>배포 확인용 커밋</p>
           </article>
         </div>
       </Link>
