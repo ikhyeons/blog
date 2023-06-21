@@ -9,10 +9,8 @@ function Category() {
       <div className={styles.ctg}>Category</div>
       <ul className={styles.ctgList}>
         {ctgList.map((data, i) => (
-          <Link href={`/${data.type}/1`}>
-            <li className={styles.ctgLi} key={i}>
-              {data.name}
-            </li>
+          <Link key={i} href={`/${data.type}/1`}>
+            <li className={styles.ctgLi}>{data.name}</li>
           </Link>
         ))}
       </ul>
