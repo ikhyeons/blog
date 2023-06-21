@@ -6,7 +6,7 @@ import DocList from './DocList';
 
 function Index() {
   return (
-    <div>
+    <>
       <SearchBar />
       <div className={styles.guestBookLine}>
         <Announcement />
@@ -14,7 +14,7 @@ function Index() {
       </div>
       <DocList type="new" />
       <DocList type="hot" />
-    </div>
+    </>
   );
 }
 

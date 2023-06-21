@@ -1,4 +1,4 @@
-import Sidebar from '@/components/sidebar/Sidebar';
+import Sidebar from '@/components/Sidebar';
 import styles from '@/styles/layout/layout.module.scss';
 
 export default function Normal({ children }: { children: React.ReactNode }) {
@@ -7,7 +7,9 @@ export default function Normal({ children }: { children: React.ReactNode }) {
       <Sidebar />
       <main>
         <div className={styles.main}>
-          <section className={styles.section}>{children}</section>
+          <section className={styles.section}>
+            <main className={styles.innerMain}>{children}</main>
+          </section>
         </div>
       </main>
     </>
