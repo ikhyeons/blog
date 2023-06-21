@@ -1,4 +1,4 @@
-import SearchBar from '@/components/index/SearchBar';
+import SearchBar from '@/components/SearchBar';
 import Announcement from '@/components/index/Announcement';
 import DocList from '@/components/index/DocList';
 import GuestBook from '@/components/index/GuestBook';

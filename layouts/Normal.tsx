@@ -1,4 +1,4 @@
-import Sidebar from '@/components/Sidebar';
+import Sidebar from '@/components/sidebar/Sidebar';
 import styles from '@/styles/layout/layout.module.scss';
 
 export default function Normal({ children }: { children: React.ReactNode }) {
