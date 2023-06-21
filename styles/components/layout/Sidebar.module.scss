@@ -67,10 +67,10 @@
   }
 
   .sidebarBottom {
-    background: linear-gradient(0, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+    background: linear-gradient(0, rgb(255, 5, 67) 85%, rgba(0, 0, 0, 0));
     width: 100%;
     position: absolute;
-    padding: 90px 10px 20px 10px;
+    padding: 50px 10px 20px 10px;
     bottom: 0px;
 
     .linkBox {
@@ -80,7 +80,7 @@
       justify-content: space-between;
       .gitLink {
         border-radius: 8px;
-        background: rgba($color: #7dff6c, $alpha: 1);
+        background: rgba($color: #353535, $alpha: 1);
         width: 48%;
         overflow: hidden;
         color: white;
@@ -88,7 +88,7 @@
       }
       .resumeLink {
         border-radius: 8px;
-        background: rgba($color: #7dff6c, $alpha: 1);
+        background: rgba($color: #353535, $alpha: 1);
         width: 48%;
         overflow: hidden;
         color: white;
@@ -99,12 +99,14 @@
     .loginBtn {
       cursor: pointer;
       width: 100%;
-      background: rgba($color: #7dff6c, $alpha: 1);
-      height: 40px;
+      background: rgba($color: #353535, $alpha: 1);
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 8px;
+      border: none;
+      color: white;
     }
   }
 }

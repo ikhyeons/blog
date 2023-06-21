@@ -1,11 +1,15 @@
 import styles from '@/styles/components/layout/Sidebar.module.scss';
-
+import Link from 'next/link';
 function Bottom() {
   return (
     <div className={styles.sidebarBottom}>
       <div className={styles.linkBox}>
-        <a className={styles.gitLink}>GitHub : https://github.com/ikhyeons</a>
-        <a className={styles.resumeLink}>resume</a>
+        <Link href={'https://github.com/ikhyeons'} target="_blank" className={styles.gitLink}>
+          GitHub : https://github.com/ikhyeons
+        </Link>
+        <Link href={'http://localhost:3000/resume'} target="_blank" className={styles.resumeLink}>
+          resume
+        </Link>
       </div>
       <button className={styles.loginBtn}>로그인ㆍ가입</button>
     </div>

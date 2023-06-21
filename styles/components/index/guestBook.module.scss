@@ -7,12 +7,12 @@
   }
 
   .guestBookBox {
-    background: white;
-    border: 2px solid white;
+    background: none;
+    border: 2px solid var(--highlight);
     border-radius: 10px;
     padding: 10px;
     height: 165px;
-    color: black;
+    color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
 
@@ -22,12 +22,21 @@
 
       .inputName {
         width: 102px;
-        padding: 3px;
+        padding: 5px;
+        background: var(--bg-sidebar);
+        margin-right: 5px;
+        &:focus {
+          outline: none;
+        }
       }
 
       .guestDoc {
         flex: 1;
-        padding: 3px;
+        padding: 5px;
+        background: var(--bg-sidebar);
+        &:focus {
+          outline: none;
+        }
       }
     }
     .guestDocList {
@@ -40,7 +49,7 @@
       }
       &::-webkit-scrollbar-thumb {
         border-radius: 3.5px;
-        background-color: var(--bg-header);
+        background-color: var(--highlight);
       }
       &::-webkit-scrollbar-track {
         background: rgba(0, 0, 0, 0);
