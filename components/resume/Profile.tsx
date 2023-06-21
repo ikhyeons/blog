@@ -6,7 +6,7 @@ function Profile() {
     <div className={styles.profileBox}>
       <img src="duckProfile.jpg" alt="" />
       <div className={styles.profile}>
-        <p>성익현 | 프론트엔드개발자</p>
+        <p>성익현 | 프론트엔드 개발자</p>
         <p>
           <span>E-mail</span> <span>skantrkwl789@naver.com</span>
         </p>
