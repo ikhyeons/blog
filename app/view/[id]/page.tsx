@@ -1,13 +1,13 @@
 import React from 'react';
 import Title from '@/components/view/Title';
-import Comment from '@/components/view/comment/Comment';
+import CommentMain from '@/components/view/comment/CommentMain';
 import Normal from '@/layouts/Normal';
 
 function page() {
   return (
     <Normal>
       <Title />
-      <Comment />
+      <CommentMain />
     </Normal>
   );
 }
