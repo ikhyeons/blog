@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from '@/styles/components/view/view.module.scss';
 
-function Card() {
-  return <li>Card</li>;
+function Content() {
+  return <article>Content</article>;
 }
 
-export default Card;
+export default Content;
