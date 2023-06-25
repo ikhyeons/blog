@@ -2,7 +2,7 @@ import styles from '@/styles/components/view/view.module.scss';
 
 function Title() {
   return (
-    <div>
+    <div className={styles.titleWrap}>
       <div className={styles.docInfo}>
         <span className={styles.modifyBtn}>수정</span>
         <span className={styles.deleteBtn}>삭제</span>
