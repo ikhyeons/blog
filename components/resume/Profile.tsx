@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from '@/styles/components/resume/Profile.module.scss';
-
+import Image from 'next/image';
 function Profile() {
   return (
     <div className={styles.profileBox}>
-      <img src="duckProfile.jpg" alt="" />
+      <Image src="duckProfile.jpg" alt="" />
       <div className={styles.profile}>
         <p>성익현 | 프론트엔드 개발자</p>
         <p>
