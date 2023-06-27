@@ -4,7 +4,14 @@ import GuestBook from './GuestBook';
 import SearchBar from '../SearchBar';
 import DocList from './DocList';
 
-function Index({ cardList }: { cardList: { id: number; thumbnail: string; title: string; summary: string }[] }) {
+function Index({
+  cardList,
+}: {
+  cardList: {
+    recent: { id: number; thumbnail: string; title: string; summary: string }[];
+    hot: { id: number; thumbnail: string; title: string; summary: string }[];
+  };
+}) {
   return (
     <>
       <SearchBar />
@@ -12,8 +19,8 @@ function Index({ cardList }: { cardList: { id: number; thumbnail: string; title:
         <Announcement />
         <GuestBook />
       </div>
-      <DocList cardList={cardList} type="new" />
-      <DocList cardList={cardList} type="hot" />
+      <DocList cardList={cardList.recent} type="new" />
+      <DocList cardList={cardList.hot} type="hot" />
     </>
   );
 }
