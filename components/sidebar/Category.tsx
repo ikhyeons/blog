@@ -24,7 +24,7 @@ export function ctgListData(): { name: string; type: string }[] {
   const ctgList = [
     { name: '공지', type: 'announcement' },
     { name: '리액트', type: 'react' },
-    { name: '노드', type: 'Nodejs' },
+    { name: '노드', type: 'nodejs' },
     { name: '잡담', type: 'any' },
   ];
   return ctgList;

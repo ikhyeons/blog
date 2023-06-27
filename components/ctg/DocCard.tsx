@@ -3,15 +3,22 @@ import styles from '@/styles/components/ctg/ctg.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 
-function DocCard() {
+function DocCard({ cardData }: { cardData: { id: number; thumbnail: string; title: string; summary: string } }) {
   return (
     <li className={styles.docCard}>
-      <Link href={'/view/2'}>
+      <Link href={`/view/${cardData.id}`}>
         <div className={styles.docCardWrap}>
-          <Image className={styles.thumnail} src="/duckProfile.jpg" width={200} height={200} alt="썸네일" />
+          <Image
+            style={{ borderRadius: '10px' }}
+            className={styles.thumnail}
+            src={`${cardData.thumbnail}`}
+            width={200}
+            height={200}
+            alt="썸네일"
+          />
           <article>
-            <p className={styles.title}>제목</p>
-            <p>배포 확인용 커밋</p>
+            <p className={styles.title}>{`${cardData.title}`}</p>
+            <p>{`${cardData.summary}`}</p>
           </article>
         </div>
       </Link>
