@@ -8,6 +8,20 @@
   flex-direction: column;
   color: var(--cl-white);
 
+  .goMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background: var(--highlight);
+    text-align: center;
+    font-size: 21px;
+    a {
+      height: 100%;
+      line-height: 50px;
+    }
+  }
+
   .profileBox {
     text-align: center;
     margin: 25px auto;
@@ -34,6 +48,9 @@
     .posting {
       margin: 5px 0px;
       margin-left: 10px;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -68,7 +85,7 @@
   }
 
   .sidebarBottom {
-    background: linear-gradient(0, rgb(255, 5, 67) 75%, rgba(0, 0, 0, 0));
+    background: linear-gradient(0, rgb(163, 35, 67) 75%, rgba(0, 0, 0, 0));
     width: 100%;
     position: absolute;
     padding: 50px 10px 20px 10px;
