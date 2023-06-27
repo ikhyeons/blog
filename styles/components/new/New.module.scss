@@ -1,0 +1,42 @@
+.titleBox {
+  .titleHead {
+    position: relative;
+    display: flex;
+    height: 60px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    background: white;
+    border: 1px solid black;
+    padding: 10px;
+
+    .titleInput {
+      font-size: 36px;
+      border: none;
+      width: 90%;
+      height: 40px;
+      margin-bottom: 5px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .submit {
+      cursor: pointer;
+      position: absolute;
+      display: block;
+      right: 5px;
+      top: 4px;
+      width: 10%;
+      height: 50px;
+      border-radius: 10px;
+      border: none;
+      background: var(--highlight);
+      font-size: 25px;
+    }
+  }
+}
+.contentWrap {
+  background: rgb(255, 251, 251);
+  color: black;
+}
