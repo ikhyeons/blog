@@ -9,7 +9,8 @@
   .docList {
     width: 100%;
     display: flex;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
 
     &::-webkit-scrollbar {
       width: 5px;
@@ -26,7 +27,6 @@
     .docCard {
       position: relative;
       border-radius: 10px;
-
       padding: 0px;
       display: block;
       margin: 10px;
@@ -36,15 +36,44 @@
       height: 300px;
       margin-bottom: 20px;
       cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+        position: relative;
+        transform: scale(1.04);
+        transition: all 0.2s;
+      }
 
       .cardImg {
         width: 100%;
         height: 100%;
         border-radius: 10px;
       }
+
+      .viewLine {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 50px;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+        background: linear-gradient(rgb(50, 50, 50), rgba(0, 0, 0, 0));
+        padding: 10px;
+        padding-top: 5px;
+        color: white;
+        span {
+          margin-left: 4px;
+        }
+        :nth-child(2) {
+          transform: translateY(-5px);
+        }
+      }
       .cardTitle {
-        height: 100px;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgb(63, 63, 63));
+        height: 130px;
+        font-size: 21px;
+        background: linear-gradient(rgba(0, 0, 0, 0), rgb(50, 50, 50));
         position: absolute;
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
@@ -55,6 +84,8 @@
         text-align: center;
         align-items: center;
         color: white;
+        word-break: keep-all;
+        padding: 50px 20px 0 20px;
       }
     }
   }

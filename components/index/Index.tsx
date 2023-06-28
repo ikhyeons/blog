@@ -8,8 +8,24 @@ function Index({
   cardList,
 }: {
   cardList: {
-    recent: { id: number; thumbnail: string; title: string; summary: string }[];
-    hot: { id: number; thumbnail: string; title: string; summary: string }[];
+    recent: {
+      id: number;
+      thumbnail: string;
+      title: string;
+      summary: string;
+      view: number;
+      like: number;
+      date: string;
+    }[];
+    hot: {
+      id: number;
+      thumbnail: string;
+      title: string;
+      summary: string;
+      view: number;
+      like: number;
+      date: string;
+    }[];
   };
 }) {
   return (

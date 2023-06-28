@@ -6,7 +6,15 @@ function DocList({
   cardList,
 }: {
   type: 'hot' | 'new';
-  cardList: { id: number; thumbnail: string; title: string; summary: string }[];
+  cardList: {
+    id: number;
+    thumbnail: string;
+    title: string;
+    summary: string;
+    view: number;
+    like: number;
+    date: string;
+  }[];
 }) {
   return (
     <div className={styles.docListWrap}>

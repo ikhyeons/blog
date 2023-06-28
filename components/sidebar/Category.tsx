@@ -10,7 +10,10 @@ function Category() {
       <ul className={styles.ctgList}>
         {ctgList.map((data, i) => (
           <Link key={i} href={`/${data.type}/1`}>
-            <li className={styles.ctgLi}>{data.name}</li>
+            <li className={styles.ctgLi}>
+              <span>{data.name}</span>
+              <span>{data.num}</span>
+            </li>
           </Link>
         ))}
       </ul>
@@ -20,12 +23,12 @@ function Category() {
 
 export default Category;
 
-export function ctgListData(): { name: string; type: string }[] {
+export function ctgListData(): { name: string; type: string; num: number }[] {
   const ctgList = [
-    { name: '공지', type: 'announcement' },
-    { name: '리액트', type: 'react' },
-    { name: '노드', type: 'nodejs' },
-    { name: '잡담', type: 'any' },
+    { name: '공지', type: 'announcement', num: 6 },
+    { name: '리액트', type: 'react', num: 44 },
+    { name: '노드', type: 'nodejs', num: 12 },
+    { name: '잡담', type: 'any', num: 128 },
   ];
   return ctgList;
 }

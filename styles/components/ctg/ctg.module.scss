@@ -1,6 +1,6 @@
 .docCard {
+  position: relative;
   width: 80%;
-
   margin-bottom: 10px;
   padding: 10px;
   background: rgb(27, 27, 27);
@@ -19,6 +19,15 @@
     .title {
       font-size: 25px;
       margin: 10px 0px;
+    }
+
+    .viewLine {
+      position: absolute;
+      bottom: 10px;
+
+      span {
+        margin-right: 10px;
+      }
     }
   }
 }
