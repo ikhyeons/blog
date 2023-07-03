@@ -1,10 +1,19 @@
-import React from 'react';
+'use client';
 import styles from '@/styles/components/user/User.module.scss';
+import { useRouter } from 'next/navigation';
 
 function Header() {
+  const router = useRouter();
   return (
     <header className={styles.loginHeader}>
-      <button className={styles.backBtn}>←뒤로가기</button>
+      <button
+        onClick={() => {
+          router.back();
+        }}
+        className={styles.backBtn}
+      >
+        ←뒤로가기
+      </button>
     </header>
   );
 }
