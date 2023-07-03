@@ -11,7 +11,9 @@ function Bottom() {
           <div className={styles.resumeLink}>resume</div>
         </Link>
       </div>
-      <button className={styles.loginBtn}>로그인ㆍ가입</button>
+      <Link href={'/user'}>
+        <button className={styles.loginBtn}>로그인ㆍ가입</button>
+      </Link>
     </div>
   );
 }
