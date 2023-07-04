@@ -1,9 +1,12 @@
+'use client';
 import styles from '@/styles/components/modal/Modal.module.scss';
 import { changeModal } from '@/utils/redux/reducer/modalSlice';
 import { useAppDispatch } from '@/utils/hooks/redux';
+import { useRouter } from 'next/navigation';
 function SelectCtg() {
   const ctgList = ['공지', '리액트', '노드', '잡담'];
   const dispatch = useAppDispatch();
+  const router = useRouter();
   return (
     <div
       onClick={(e) => {
@@ -17,6 +20,7 @@ function SelectCtg() {
             key={i}
             onClick={() => {
               dispatch(changeModal('close'));
+              router.push('/new/react');
             }}
           >
             {data}
