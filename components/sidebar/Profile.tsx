@@ -1,13 +1,12 @@
 'use client';
 
 import styles from '@/styles/components/layout/Sidebar.module.scss';
-import { Amodal } from '@/utils/recoilStore/modal';
 import Image from 'next/image';
-import { useRecoilState } from 'recoil';
+import { changeModal } from '@/utils/redux/reducer/modalSlice';
+import { useDispatch } from 'react-redux';
 
 function Profile() {
-  const [isModal, setIsModal] = useRecoilState(Amodal);
-
+  const dispatch = useDispatch();
   return (
     <div className={styles.profileBox}>
       <Image width={200} height={200} className={styles.img} src="/duckProfile.jpg" alt="" />
@@ -18,7 +17,7 @@ function Profile() {
 
       <span
         onClick={() => {
-          setIsModal('ctg');
+          dispatch(changeModal('ctg'));
         }}
         className={styles.posting}
       >

@@ -1,10 +1,9 @@
 import styles from '@/styles/components/modal/Modal.module.scss';
-import { Amodal } from '@/utils/recoilStore/modal';
-import { useRecoilState } from 'recoil';
-
+import { changeModal } from '@/utils/redux/reducer/modalSlice';
+import { useDispatch } from 'react-redux';
 function SelectCtg() {
   const ctgList = ['공지', '리액트', '노드', '잡담'];
-  const [isModal, setIsModal] = useRecoilState(Amodal);
+  const dispatch = useDispatch();
   return (
     <div
       onClick={(e) => {
@@ -17,7 +16,7 @@ function SelectCtg() {
           <li
             key={i}
             onClick={() => {
-              setIsModal('close');
+              dispatch(changeModal('close'));
             }}
           >
             {data}

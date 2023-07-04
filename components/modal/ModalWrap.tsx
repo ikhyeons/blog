@@ -2,17 +2,19 @@
 
 import styles from '@/styles/components/modal/Modal.module.scss';
 import SelectCtg from './selectCtg/SelectCtg';
-import { useRecoilState } from 'recoil';
-import { Amodal } from '@/utils/recoilStore/modal';
+import { changeModal } from '@/utils/redux/reducer/modalSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 function ModalWrap() {
-  const [isModal, setIsModal] = useRecoilState(Amodal);
+  const dispatch = useDispatch();
+  const state = useSelector<any, { modalReducer: { value: 'close' | 'ctg' } }>((state) => state);
+
   return (
     <div
       onClick={(e) => {
-        setIsModal('close');
+        dispatch(changeModal('close'));
       }}
-      className={`${styles.modalWrap} ${isModal == 'close' ? styles.off : null}`}
+      className={`${styles.modalWrap} ${state.modalReducer.value == 'close' ? styles.off : null}`}
     >
       <SelectCtg />
     </div>
