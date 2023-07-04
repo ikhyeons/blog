@@ -1,5 +1,6 @@
 import styles from '@/styles/components/layout/Sidebar.module.scss';
 import Link from 'next/link';
+
 function Bottom() {
   return (
     <div className={styles.sidebarBottom}>

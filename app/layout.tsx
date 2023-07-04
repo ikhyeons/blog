@@ -1,4 +1,7 @@
+'use client';
+import ModalWrap from '@/components/modal/ModalWrap';
 import './globals.css';
+import { RecoilRoot, useRecoilState } from 'recoil';
 
 export const metadata = {
   title: 'personal blog',
@@ -8,7 +11,12 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body style={{ background: 'var(--bg-main)' }}>{children}</body>
+      <RecoilRoot>
+        <body style={{ background: 'var(--bg-main)' }}>
+          {children}
+          <ModalWrap />
+        </body>
+      </RecoilRoot>
     </html>
   );
 }
