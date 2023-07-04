@@ -1,4 +1,3 @@
-'use client';
 import ModalWrap from '@/components/modal/ModalWrap';
 import './globals.css';
 import { Providers } from '@/utils/redux/Providers';
