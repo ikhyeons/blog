@@ -3,10 +3,10 @@
 import styles from '@/styles/components/layout/Sidebar.module.scss';
 import Image from 'next/image';
 import { changeModal } from '@/utils/redux/reducer/modalSlice';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '@/utils/hooks/redux';
 
 function Profile() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <div className={styles.profileBox}>
       <Image width={200} height={200} className={styles.img} src="/duckProfile.jpg" alt="" />
