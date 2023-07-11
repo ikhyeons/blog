@@ -1,13 +1,12 @@
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-import { jsontokenKey } from '../keys';
 
 export const auth = (req: Request, res: Response, next: NextFunction) => {
-  const key = jsontokenKey;
+  const jwtKey = process.env.JWT_KEY;
   // 인증 완료
   try {
     if (req.headers.authorization) {
-      req.decoded = jwt.verify(req.headers.authorization, key);
+      req.decoded = jwt.verify(req.headers.authorization, jwtKey!);
       return next();
     } else {
       return res.status(419).json({

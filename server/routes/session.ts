@@ -2,7 +2,6 @@ import express, { Response, Request } from 'express';
 import getConnection from '../mysql/connection';
 import { FieldPacket, RowDataPacket } from 'mysql2';
 import jwt from 'jsonwebtoken';
-import { jsontokenKey } from '../keys';
 import { auth } from '../middleWares/authMiddleware';
 
 const router = express.Router();
@@ -16,7 +15,7 @@ type DataSet<T> = [T[], FieldPacket[]];
 // 로그인
 router.post('/login', async (req, res, next) => {
   const { email, password } = req.body;
-
+  const jwtKey = process.env.JWT_KEY;
   const emailQuery = 'SELECT password from user WHERE email = ?';
   const conn = await getConnection();
   const [getPassword]: DataSet<Password> = await conn.query(emailQuery, [email]);
@@ -29,7 +28,7 @@ router.post('/login', async (req, res, next) => {
       email: email,
       password: password,
     },
-    jsontokenKey,
+    jwtKey!,
     {
       expiresIn: '15m',
       issuer: 'ikhyeons',
