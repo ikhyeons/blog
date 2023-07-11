@@ -27,7 +27,7 @@ app.prepare().then(() => {
     console.log('hello');
   });
 
-  server.all('*', (req: Request, res: Response) => {
+  server.get('*', (req: Request, res: Response) => {
     return handle(req, res);
   });
 
