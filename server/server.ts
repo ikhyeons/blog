@@ -3,7 +3,7 @@ import next from 'next';
 import user from './routes/user';
 import session from './routes/session';
 
-const dev = process.env.NODE_ENV === 'development';
+const dev = process.env.NODE_ENV === 'production';
 const port = 3000;
 const app = next({ dev, port });
 
