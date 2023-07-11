@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import next from 'next';
-
-console.log('gd');
+import user from './routes/user';
+import session from './routes/session';
 
 const dev = process.env.NODE_ENV === 'development';
 const port = 3000;
@@ -11,6 +11,10 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = express();
+
+  server.use(express.json());
+  server.use('/user', user);
+  server.use('/session', session);
 
   server.get('/getRequest', (req: Request, res: Response) => {
     console.log('hello');
