@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import next from 'next';
 import user from './routes/user';
 import session from './routes/session';
+import cors from 'cors';
 
 const dev = process.env.NODE_ENV === 'production';
 const port = 3000;
@@ -12,6 +13,12 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = express();
 
+  let corsOptions = {
+    origin: ['*'],
+    credentials: true,
+  };
+
+  server.use(cors(corsOptions));
   server.use(express.json());
   server.use('/user', user);
   server.use('/session', session);
