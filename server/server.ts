@@ -1,10 +1,12 @@
 import express, { Request, Response } from 'express';
 import next from 'next';
-import user from './routes/user';
-import session from './routes/session';
 import cors from 'cors';
 
-const dev = process.env.NODE_ENV === 'production';
+import user from './routes/user';
+import session from './routes/session';
+import community from './routes/community';
+
+const dev = process.env.NODE_ENV === 'development';
 const port = 3000;
 const app = next({ dev, port });
 
@@ -22,8 +24,9 @@ app.prepare().then(() => {
   server.use(express.json());
   server.use('/user', user);
   server.use('/session', session);
+  server.use('/community', community);
 
-  server.get('/getRequest', (req: Request, res: Response) => {
+  server.get('/checkRequest', (req: Request, res: Response) => {
     console.log('hello');
   });
 
