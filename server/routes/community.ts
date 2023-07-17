@@ -59,6 +59,8 @@ router.get('/indexpost', async (req: Request, res: Response) => {
   const [recentData]: DataSet<Postdata> = await conn.query(recentQuery);
   const [hotData]: DataSet<Postdata> = await conn.query(hotQuery);
   const [noticeData]: DataSet<Postdata> = await conn.query(noticeQuery);
+
+  console.log('onhere');
   return res.status(200).json({
     code: 200,
     postList: { recent: recentData, hot: hotData, notice: noticeData },
