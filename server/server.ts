@@ -10,6 +10,7 @@ import blogInfo from './routes/blogInfo';
 
 const dev = process.env.NODE_ENV === 'development';
 const port = 3000;
+console.log('dev : ' + dev);
 const app = next({ dev, port });
 
 const handle = app.getRequestHandler();
@@ -30,10 +31,6 @@ app.prepare().then(() => {
   server.use('/session', session);
   server.use('/community', community);
   server.use('/blogInfo', blogInfo);
-
-  server.get('/checkRequest', (req: Request, res: Response) => {
-    console.log('hello');
-  });
 
   server.all('*', (req: Request, res: Response) => {
     return handle(req, res);

@@ -24,7 +24,9 @@
     &::-webkit-scrollbar-track {
       background: rgba(0, 0, 0, 0);
     }
-
+    a {
+      width: auto;
+    }
     .docCard {
       position: relative;
       border-radius: 10px;

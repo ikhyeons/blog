@@ -12,7 +12,7 @@ function DocList({
     title: string;
     summary: string;
     view: number;
-    like: number;
+    love: number;
     date: string;
   }[];
 }) {

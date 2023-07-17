@@ -4,17 +4,17 @@ import GuestBook from './GuestBook';
 import SearchBar from '../SearchBar';
 import DocList from './DocList';
 
-function Index({
-  cardList,
+async function Index({
+  postList,
 }: {
-  cardList: {
+  postList: {
     recent: {
       id: number;
       thumbnail: string;
       title: string;
       summary: string;
       view: number;
-      like: number;
+      love: number;
       date: string;
     }[];
     hot: {
@@ -23,7 +23,16 @@ function Index({
       title: string;
       summary: string;
       view: number;
-      like: number;
+      love: number;
+      date: string;
+    }[];
+    notice: {
+      id: number;
+      thumbnail: string;
+      title: string;
+      summary: string;
+      view: number;
+      love: number;
       date: string;
     }[];
   };
@@ -32,13 +41,12 @@ function Index({
     <>
       <SearchBar />
       <div className={styles.guestBookLine}>
-        <Announcement />
+        <Announcement noticeList={postList.notice} />
         <GuestBook />
       </div>
-      <DocList cardList={cardList.recent} type="new" />
-      <DocList cardList={cardList.hot} type="hot" />
+      <DocList cardList={postList.recent} type="new" />
+      <DocList cardList={postList.hot} type="hot" />
     </>
   );
 }
-
 export default Index;
