@@ -11,7 +11,9 @@ export default async function Home() {
 }
 
 async function getData() {
-  const fetchData = await (await fetch('http://localhost:3001/community/indexpost', { method: 'get' })).json();
+  const fetchData = await (
+    await fetch('http://localhost:3001/community/indexpost', { method: 'get', cache: 'no-store' })
+  ).json();
   const postList = fetchData.postList;
   return postList;
 }
