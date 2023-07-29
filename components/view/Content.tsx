@@ -8,12 +8,12 @@ import 'highlight.js/styles/tokyo-night-dark.css';
 
 import { Viewer } from '@toast-ui/react-editor';
 
-function Content() {
+function Content({ data }: { data: string }) {
   const contentData = view();
 
   return (
     <article className={styles.mainContent}>
-      <Viewer initialValue={contentData} />
+      <Viewer initialValue={data} />
     </article>
   );
 }

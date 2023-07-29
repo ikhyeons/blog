@@ -1,6 +1,9 @@
 'use client';
 import styles from '@/styles/components/user/User.module.scss';
+import { useLoginMutation } from '@/utils/redux/reducer/sessionAPISlice';
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import { useCookies } from 'react-cookie';
 
 function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'main' | 'login' | 'join'>> }) {
   const [step, setStep] = useState(0);
@@ -9,7 +12,14 @@ function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'m
   const [isLast, setIsLast] = useState(true);
 
   const [email, setEmail] = useState('');
-  const [pw, setPW] = useState('');
+  const [password, setPW] = useState('');
+
+  const [cookies, setCookie, removeCookie] = useCookies(['token']);
+
+  const [login, { isLoading: isUpdating }] = useLoginMutation();
+
+  const router = useRouter();
+
   useEffect(() => {
     setStep(1);
   }, []);
@@ -58,23 +68,29 @@ function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'m
         Password
         <input
           role="pwInput"
-          value={pw}
+          value={password}
           ref={pwInput}
           onChange={(e) => {
             setPW(e.target.value);
           }}
           onKeyUp={(e) => {
-            if (pw != '') setIsLast(true);
+            if (password != '') setIsLast(true);
             else setIsLast(false);
 
-            if (e.key == 'Backspace' && pw == '' && !isLast) {
+            if (e.key == 'Backspace' && password == '' && !isLast) {
               emailInput.current?.focus();
               setStep(1);
             }
           }}
           onKeyDown={(e) => {
             if (e.key == 'Enter') {
-              alert('login 시도');
+              login({ email, password })
+                .unwrap()
+                .then((res) => {
+                  console.log(res.token);
+                  setCookie('token', res.token!);
+                  res.code === 200 ? router.push('/') : alert(res.message);
+                });
             }
           }}
           type="password"

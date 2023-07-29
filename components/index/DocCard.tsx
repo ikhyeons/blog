@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { VscEye } from 'react-icons/vsc';
 import { FiThumbsUp } from 'react-icons/fi';
-import getTime from '@/utils/functions/getTime';
+import { getTimeByNow } from '@/utils/functions/time';
 
 function DocCard({
   cardData,
@@ -18,7 +18,6 @@ function DocCard({
     date: string;
   };
 }) {
-  console.log(cardData);
   return (
     <Link href={`/view/${cardData.id}`}>
       <li className={styles.docCard}>
@@ -32,7 +31,7 @@ function DocCard({
           />
         ) : null}
         <div className={styles.viewLine}>
-          <span>{getTime(cardData.date)}</span>
+          <span>{getTimeByNow(cardData.date)}</span>
           <span>
             <span>
               <VscEye style={{ fontSize: '25px', transform: 'translatey(6px)' }} /> {cardData.view}

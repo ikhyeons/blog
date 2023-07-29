@@ -1,15 +1,16 @@
 import styles from '@/styles/components/view/view.module.scss';
 import Image from 'next/image';
+import { getTimeH } from '@/utils/functions/time';
 
-function Title() {
+function Title({ title, date }: { title: string; date: string }) {
   return (
     <div className={styles.titleWrap}>
       <div className={styles.docInfo}>
         <span className={styles.modifyBtn}>수정</span>
         <span className={styles.deleteBtn}>삭제</span>
-        <span className={styles.date}>날짜 : 2023.06.12</span>
+        <span className={styles.date}>날짜 : {getTimeH(date)}</span>
       </div>
-      <h1 className={styles.title}>블로그 TDD 전환 및 Recoil → Redux 마이그레이션 후기</h1>
+      <h1 className={styles.title}>{title}</h1>
       <Image
         width={200}
         height={200}

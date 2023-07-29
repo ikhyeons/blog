@@ -9,12 +9,13 @@ function DocCardWrap({
     id: number;
     thumbnail: string;
     title: string;
-    summary: string;
+    content: string;
     view: number;
-    like: number;
+    love: number;
     date: string;
   }[];
 }) {
+  console.log(cardList);
   return (
     <ul>
       {cardList.map((data, i) => (

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { VscEye } from 'react-icons/vsc';
 import { FiThumbsUp } from 'react-icons/fi';
+import { getTimeByNow } from '@/utils/functions/time';
 
 function DocCard({
   cardData,
@@ -12,9 +13,9 @@ function DocCard({
     id: number;
     thumbnail: string;
     title: string;
-    summary: string;
+    content: string;
     view: number;
-    like: number;
+    love: number;
     date: string;
   };
 }) {
@@ -22,24 +23,35 @@ function DocCard({
     <li className={styles.docCard}>
       <Link href={`/view/${cardData.id}`}>
         <div className={styles.docCardWrap}>
-          <Image
-            style={{ borderRadius: '10px' }}
-            className={styles.thumnail}
-            src={`${cardData.thumbnail}`}
-            width={200}
-            height={200}
-            alt="썸네일"
-          />
+          {cardData.thumbnail ? (
+            <Image
+              style={{ borderRadius: '10px' }}
+              className={styles.thumnail}
+              src={`${cardData.thumbnail}`}
+              width={200}
+              height={200}
+              alt="썸네일"
+            />
+          ) : (
+            <Image
+              style={{ borderRadius: '10px' }}
+              className={styles.thumnail}
+              src={`/noImage.png`}
+              width={200}
+              height={200}
+              alt="이미지 없음"
+            />
+          )}
           <article>
             <p className={styles.title}>{`${cardData.title}`}</p>
-            <p>{`${cardData.summary}`}</p>
+            <p className={styles.summary}>{`${cardData.content}`}</p>
             <p className={styles.viewLine}>
-              <span>{cardData.date}</span>
+              <span>{getTimeByNow(cardData.date)}</span>
               <span>
                 <VscEye style={{ fontSize: '25px', transform: 'translatey(6px)' }} /> {cardData.view}
               </span>
               <span>
-                <FiThumbsUp /> {cardData.like}
+                <FiThumbsUp /> {cardData.love}
               </span>
             </p>
           </article>

@@ -1,30 +1,30 @@
-'use client';
-
 import styles from '@/styles/components/layout/Sidebar.module.scss';
 import Image from 'next/image';
-import { changeModal } from '@/utils/redux/reducer/modalSlice';
-import { useAppDispatch } from '@/utils/hooks/redux';
+import PostingBtn from './PostingBtn';
 
-function Profile() {
-  const dispatch = useAppDispatch();
+async function Profile() {
+  const profile = await getProfileData();
+
   return (
     <div className={styles.profileBox}>
-      <Image width={200} height={200} className={styles.img} src="/duckProfile.jpg" alt="" />
-      <div className={styles.name}>잠자는오리</div>
+      {profile.profile ? (
+        <Image width={200} height={200} className={styles.img} src={`${profile.profile}`} alt="" />
+      ) : (
+        <Image width={200} height={200} className={styles.img} src="/duckProfile.jpg" alt="" />
+      )}
+      <div className={styles.name}>{profile.nickname}</div>
       <div className={styles.subName}>DrowzyDuck</div>
-      <div className={styles.email}>skantrkwl789@naver.com</div>
-      <span className={styles.visitor}>today 35</span>
-
-      <span
-        onClick={() => {
-          dispatch(changeModal('ctg'));
-        }}
-        className={styles.posting}
-      >
-        포스팅
-      </span>
+      <div className={styles.email}>{profile.email}</div>
+      <span className={styles.visitor}>today {profile.visit}</span>
+      <PostingBtn />
     </div>
   );
 }
 
 export default Profile;
+
+async function getProfileData() {
+  const fetchData = await (await fetch('http://localhost:3001/bloginfo', { method: 'get', cache: 'no-store' })).json();
+  const [profile] = fetchData.bloginfo;
+  return profile;
+}

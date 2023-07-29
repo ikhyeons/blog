@@ -1,18 +1,12 @@
-'use client';
 import Normal from '@/layouts/Normal';
-import Title from '@/components/new/Title';
-import Content from '@/components/new/Content';
-import { useState } from 'react';
+import EditorWrap from '@/components/new/EditorWrap';
 
 import React from 'react';
 
-function Page() {
-  const [formData, setFormData] = useState({});
-
+function Page({ params }: { params: { ctg: string } }) {
   return (
     <Normal>
-      <Title />
-      <Content />
+      <EditorWrap ctg={params.ctg} />
     </Normal>
   );
 }

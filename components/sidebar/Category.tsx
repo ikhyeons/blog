@@ -1,8 +1,7 @@
 import styles from '@/styles/components/layout/Sidebar.module.scss';
 import Link from 'next/link';
-
-function Category() {
-  const ctgList = ctgListData();
+async function Category() {
+  const ctgList = await getCategoryData();
 
   return (
     <>
@@ -23,12 +22,15 @@ function Category() {
 
 export default Category;
 
-export function ctgListData(): { name: string; type: string; num: number }[] {
-  const ctgList = [
-    { name: '공지', type: 'announcement', num: 6 },
-    { name: '리액트', type: 'react', num: 44 },
-    { name: '노드', type: 'nodejs', num: 12 },
-    { name: '잡담', type: 'any', num: 128 },
-  ];
-  return ctgList;
+async function getCategoryData() {
+  const fetchData = await (
+    await fetch('http://localhost:3001/community/category', { method: 'get', cache: 'no-store' })
+  ).json();
+  const categoryList: {
+    id: number;
+    type: string;
+    name: string;
+    num: number;
+  }[] = fetchData.categoryList;
+  return categoryList;
 }

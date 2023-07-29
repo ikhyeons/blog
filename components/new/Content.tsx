@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styles from '@/styles/components/new/New.module.scss';
-
 import dynamic from 'next/dynamic';
-
 import hljs from 'highlight.js';
-
 const ReactQuill = dynamic(() => import('react-quill'), {
   ssr: false,
   loading: () => <p>Loading</p>,
 });
 
 import 'react-quill/dist/quill.snow.css';
+import { useAppDispatch, useAppSelector } from '@/utils/hooks/redux';
+import { updateContent } from '@/utils/redux/reducer/docFormSlice';
 
 const modules = {
   syntax: { highlight: (text: string) => hljs.highlightAuto(text).value },
@@ -71,15 +70,19 @@ const modules = {
 };
 
 function Content() {
-  const [value, setValue] = useState('');
-  useEffect(() => {
-    console.log(value);
-  }, [value]);
+  const dispatch = useAppDispatch();
+  const content = useAppSelector((state) => state.docFormReducer.content);
 
   return (
     <>
       <div className={styles.contentWrap}>
-        <ReactQuill modules={modules} value={value} onChange={setValue} />
+        <ReactQuill
+          modules={modules}
+          value={content}
+          onChange={(e) => {
+            dispatch(updateContent(e));
+          }}
+        />
       </div>
     </>
   );
