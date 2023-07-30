@@ -6,6 +6,7 @@ import DocList from './DocList';
 
 async function Index({
   postList,
+  guestbookList,
 }: {
   postList: {
     recent: {
@@ -36,13 +37,19 @@ async function Index({
       date: string;
     }[];
   };
+  guestbookList: {
+    nickname: string;
+    date: string;
+    ip: string;
+    content: string;
+  }[];
 }) {
   return (
     <>
       <SearchBar />
       <div className={styles.guestBookLine}>
         <Announcement noticeList={postList.notice} />
-        <GuestBook />
+        <GuestBook guestbookList={guestbookList} />
       </div>
       <DocList cardList={postList.recent} type="new" />
       <DocList cardList={postList.hot} type="hot" />

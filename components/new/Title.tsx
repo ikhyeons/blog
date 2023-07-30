@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '@/styles/components/new/New.module.scss';
 import { useAppDispatch, useAppSelector } from '@/utils/hooks/redux';
 import { updateTitle } from '@/utils/redux/reducer/docFormSlice';
 import { useAddPostMutation } from '@/utils/redux/reducer/communityAPISlice';
 import { useCookies } from 'react-cookie';
-import { useSearchParams, useParams } from 'next/navigation';
+import { useSearchParams, useParams, useRouter } from 'next/navigation';
 
 function Title({ ctg }: { ctg: string }) {
   const dispatch = useAppDispatch();
@@ -12,12 +12,22 @@ function Title({ ctg }: { ctg: string }) {
   const documentInfo = useAppSelector((state) => state.docFormReducer);
   const [addPost, { isLoading: isUpdating }] = useAddPostMutation();
   const [{ token }] = useCookies();
+  const router = useRouter();
+  const [submit, setSubmit] = useState(0);
 
   const params = useParams();
 
   console.log(params);
 
   useEffect(() => {
+    if (isUpdating) {
+      console.log('updating');
+    } else if (submit == 1) {
+      console.log('end');
+      router.push('/');
+    } else {
+      console.log('end');
+    }
     isUpdating ? console.log('updating') : console.log('end');
   }, [isUpdating]);
   return (
@@ -34,6 +44,7 @@ function Title({ ctg }: { ctg: string }) {
         <button
           onClick={() => {
             addPost({ ...documentInfo, ctg, token });
+            setSubmit(1);
           }}
           className={styles.submit}
         >

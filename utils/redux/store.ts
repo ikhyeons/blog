@@ -5,6 +5,7 @@ import docFormReducer from './reducer/docFormSlice';
 import { postApi } from './reducer/communityAPISlice';
 import { userApi } from './reducer/userAPISlice';
 import { sessionApi } from './reducer/sessionAPISlice';
+import { guestBookApi } from './reducer/guestbookAPISlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,9 +14,14 @@ export const store = configureStore({
     [postApi.reducerPath]: postApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [sessionApi.reducerPath]: sessionApi.reducer,
+    [guestBookApi.reducerPath]: guestBookApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(postApi.middleware).concat(userApi.middleware).concat(sessionApi.middleware),
+    getDefaultMiddleware()
+      .concat(postApi.middleware)
+      .concat(userApi.middleware)
+      .concat(sessionApi.middleware)
+      .concat(guestBookApi.middleware),
 });
 
 setupListeners(store.dispatch);

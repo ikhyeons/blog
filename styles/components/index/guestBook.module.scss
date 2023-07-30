@@ -25,6 +25,7 @@
         padding: 5px;
         background: var(--bg-sidebar);
         margin-right: 5px;
+        color: white;
         &:focus {
           outline: none;
         }
@@ -33,6 +34,7 @@
       .guestDoc {
         flex: 1;
         padding: 5px;
+        color: white;
         background: var(--bg-sidebar);
         &:focus {
           outline: none;

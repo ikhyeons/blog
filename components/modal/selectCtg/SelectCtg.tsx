@@ -1,13 +1,16 @@
 'use client';
+
 import styles from '@/styles/components/modal/Modal.module.scss';
 import { changeModal } from '@/utils/redux/reducer/modalSlice';
 import { useAppDispatch } from '@/utils/hooks/redux';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { useGetCtgListQuery } from '@/utils/redux/reducer/communityAPISlice';
+
 function SelectCtg() {
-  const ctgList = ['공지', '리액트', '노드', '잡담'];
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const { data, error, isLoading } = useGetCtgListQuery(null);
+  const ctgList = data!;
   return (
     <div
       onClick={(e) => {
@@ -16,17 +19,18 @@ function SelectCtg() {
       className={styles.selectCtg}
     >
       <ul className={styles.ctgList}>
-        {ctgList.map((data, i) => (
-          <li
-            key={i}
-            onClick={() => {
-              dispatch(changeModal('close'));
-              router.push('/new/react');
-            }}
-          >
-            {data}
-          </li>
-        ))}
+        {!isLoading &&
+          ctgList.categoryList.map((data, i) => (
+            <li
+              key={i}
+              onClick={() => {
+                dispatch(changeModal('close'));
+                router.push(`/new/${data.type}`);
+              }}
+            >
+              {data.name}
+            </li>
+          ))}
       </ul>
     </div>
   );
