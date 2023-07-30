@@ -24,7 +24,10 @@ export default Category;
 
 async function getCategoryData() {
   const fetchData = await (
-    await fetch('http://localhost:3001/community/category', { method: 'get', cache: 'no-store' })
+    await fetch(`http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/category`, {
+      method: 'get',
+      cache: 'no-store',
+    })
   ).json();
   const categoryList: {
     id: number;

@@ -26,7 +26,10 @@ export default page;
 
 async function getCardList({ ctg, page }: { ctg: string; page: number }) {
   const fetchData = await (
-    await fetch(`http://localhost:3001/community/list/${ctg}`, { method: 'get', cache: 'no-store' })
+    await fetch(`http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/list/${ctg}`, {
+      method: 'get',
+      cache: 'no-store',
+    })
   ).json();
   const postList = fetchData.documentList;
   return postList;

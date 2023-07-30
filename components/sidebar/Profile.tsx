@@ -24,7 +24,9 @@ async function Profile() {
 export default Profile;
 
 async function getProfileData() {
-  const fetchData = await (await fetch('http://localhost:3001/bloginfo', { method: 'get', cache: 'no-store' })).json();
+  const fetchData = await (
+    await fetch(`http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/bloginfo`, { method: 'get', cache: 'no-store' })
+  ).json();
   const [profile] = fetchData.bloginfo;
   return profile;
 }
