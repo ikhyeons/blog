@@ -27,7 +27,7 @@ function DocCard({
             <Image
               style={{ borderRadius: '10px' }}
               className={styles.thumnail}
-              src={`http://localhost:3001/image/${cardData.thumbnailPath}`}
+              src={`http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/image/${cardData.thumbnailPath}`}
               width={200}
               height={200}
               alt="썸네일"
