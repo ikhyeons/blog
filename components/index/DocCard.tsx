@@ -22,7 +22,7 @@ function DocCard({
     <Link href={`/view/${cardData.id}`}>
       <li className={styles.docCard}>
         {cardData.thumbnailPath ? (
-          <Image
+          <img
             className={styles.cardImg}
             width={200}
             height={200}

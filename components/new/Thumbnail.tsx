@@ -7,6 +7,7 @@ function Thumbnail() {
   const dispatch = useAppDispatch();
   const [isSelected, setIsSelected] = useState(false);
   const [postImage, { isLoading: isUpdating }] = usePostImageMutation();
+  const [path, setPath] = useState('');
   return (
     <div className="">
       {isSelected ? (
@@ -15,7 +16,7 @@ function Thumbnail() {
             setIsSelected(false);
           }}
           className={styles.imageWrap}
-          src={''}
+          src={`http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/${path}`}
         />
       ) : (
         <>
@@ -34,6 +35,7 @@ function Thumbnail() {
                 .then((data) => {
                   console.log('gd');
                   dispatch(setThumbnail(data.imageId));
+                  setPath(data.imageId);
                 });
             }}
             style={{ display: 'none' }}

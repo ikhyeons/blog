@@ -24,7 +24,7 @@ function DocCard({
       <Link href={`/view/${cardData.id}`}>
         <div className={styles.docCardWrap}>
           {cardData.thumbnailPath ? (
-            <Image
+            <img
               style={{ borderRadius: '10px' }}
               className={styles.thumnail}
               src={`http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/image/${cardData.thumbnailPath}`}
