@@ -7,7 +7,7 @@ function DocCardWrap({
 }: {
   cardList: {
     id: number;
-    thumbnail: string;
+    thumbnailPath: string;
     title: string;
     content: string;
     view: number;

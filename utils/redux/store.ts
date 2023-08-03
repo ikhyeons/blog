@@ -6,6 +6,7 @@ import { postApi } from './reducer/communityAPISlice';
 import { userApi } from './reducer/userAPISlice';
 import { sessionApi } from './reducer/sessionAPISlice';
 import { guestBookApi } from './reducer/guestbookAPISlice';
+import { imageApi } from './reducer/imageAPISlice';
 
 export const store = configureStore({
   reducer: {
@@ -15,13 +16,15 @@ export const store = configureStore({
     [userApi.reducerPath]: userApi.reducer,
     [sessionApi.reducerPath]: sessionApi.reducer,
     [guestBookApi.reducerPath]: guestBookApi.reducer,
+    [imageApi.reducerPath]: imageApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(postApi.middleware)
       .concat(userApi.middleware)
       .concat(sessionApi.middleware)
-      .concat(guestBookApi.middleware),
+      .concat(guestBookApi.middleware)
+      .concat(imageApi.middleware),
 });
 
 setupListeners(store.dispatch);

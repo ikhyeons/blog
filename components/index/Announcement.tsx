@@ -1,11 +1,11 @@
 import styles from '@/styles/components/index/announcement.module.scss';
-
+import Link from 'next/link';
 function Announcement({
   noticeList,
 }: {
   noticeList: {
     id: number;
-    thumbnail: string;
+    thumbnailPath: string;
     title: string;
     summary: string;
     view: number;
@@ -19,9 +19,11 @@ function Announcement({
 
       <ul className={styles.announcementBox}>
         {noticeList.map((data, i) => (
-          <li key={i} className={styles.announcementLi}>
-            {data.title}
-          </li>
+          <Link key={i} href={`/view/${data.id}`}>
+            <li key={i} className={styles.announcementLi}>
+              {data.title}
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

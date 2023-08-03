@@ -6,7 +6,7 @@ import DocCardWrap from '@/components/ctg/DocCardWrap';
 async function page({ params }: { params: { ctg: string; page: number } }) {
   const cardList: {
     id: number;
-    thumbnail: string;
+    thumbnailPath: string;
     title: string;
     content: string;
     view: number;

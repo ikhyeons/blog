@@ -8,7 +8,7 @@ function DocList({
   type: 'hot' | 'new';
   cardList: {
     id: number;
-    thumbnail: string;
+    thumbnailPath: string;
     title: string;
     summary: string;
     view: number;

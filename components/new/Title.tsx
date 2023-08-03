@@ -16,7 +16,7 @@ function Title({ ctg }: { ctg: string }) {
   const [submit, setSubmit] = useState(0);
 
   const params = useParams();
-
+  console.log(documentInfo);
   console.log(params);
 
   useEffect(() => {

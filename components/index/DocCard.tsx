@@ -10,7 +10,7 @@ function DocCard({
 }: {
   cardData: {
     id: number;
-    thumbnail: string;
+    thumbnailPath: string;
     title: string;
     summary: string;
     view: number;
@@ -21,12 +21,13 @@ function DocCard({
   return (
     <Link href={`/view/${cardData.id}`}>
       <li className={styles.docCard}>
-        {cardData.thumbnail ? (
+        {cardData.thumbnailPath ? (
           <Image
             className={styles.cardImg}
             width={200}
             height={200}
-            src={`${cardData.thumbnail}`}
+            style={{ width: '260px', height: '300px' }}
+            src={`http://localhost:3001/image/${cardData.thumbnailPath}`}
             alt="글 리스트 사진"
           />
         ) : null}

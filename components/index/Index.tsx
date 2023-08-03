@@ -11,7 +11,7 @@ async function Index({
   postList: {
     recent: {
       id: number;
-      thumbnail: string;
+      thumbnailPath: string;
       title: string;
       summary: string;
       view: number;
@@ -20,7 +20,7 @@ async function Index({
     }[];
     hot: {
       id: number;
-      thumbnail: string;
+      thumbnailPath: string;
       title: string;
       summary: string;
       view: number;
@@ -29,7 +29,7 @@ async function Index({
     }[];
     notice: {
       id: number;
-      thumbnail: string;
+      thumbnailPath: string;
       title: string;
       summary: string;
       view: number;

@@ -11,7 +11,7 @@ function DocCard({
 }: {
   cardData: {
     id: number;
-    thumbnail: string;
+    thumbnailPath: string;
     title: string;
     content: string;
     view: number;
@@ -23,11 +23,11 @@ function DocCard({
     <li className={styles.docCard}>
       <Link href={`/view/${cardData.id}`}>
         <div className={styles.docCardWrap}>
-          {cardData.thumbnail ? (
+          {cardData.thumbnailPath ? (
             <Image
               style={{ borderRadius: '10px' }}
               className={styles.thumnail}
-              src={`${cardData.thumbnail}`}
+              src={`http://localhost:3001/image/${cardData.thumbnailPath}`}
               width={200}
               height={200}
               alt="썸네일"

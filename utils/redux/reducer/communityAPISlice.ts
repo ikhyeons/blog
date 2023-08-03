@@ -5,6 +5,7 @@ export interface docState {
   content: string;
   ctg: string;
   token: string;
+  imageFile: string;
 }
 
 type PostsResponse = docState[];
@@ -22,7 +23,7 @@ export const postApi = createApi({
           url: `post`,
           headers: { authorization: token },
           method: 'POST',
-          body: { ...body, categoryID: ctg },
+          body: { ...body, categoryType: ctg },
         };
       },
       invalidatesTags: [{ type: 'post' }],
