@@ -13,7 +13,7 @@ export default async function Home() {
 
 async function getDocumentData() {
   const fetchData = await (
-    await fetch(`https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/indexpost`, {
+    await fetch(`http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/indexpost`, {
       method: 'get',
       cache: 'no-store',
     })
