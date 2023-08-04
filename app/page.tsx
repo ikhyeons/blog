@@ -24,7 +24,7 @@ async function getDocumentData() {
 
 async function getGuestBookData() {
   const fetchData = await (
-    await fetch(`https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/guestBook/`, { method: 'get', cache: 'no-store' })
+    await fetch(`http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/guestBook/`, { method: 'get', cache: 'no-store' })
   ).json();
   const guestBookList = fetchData.guestbookData;
   return guestBookList;
