@@ -5,9 +5,15 @@ import Content from '@/components/view/Content';
 
 async function page({ params }: { params: { id: number } }) {
   const documentData = await getDocumentData(params.id);
+  console.log(documentData);
   return (
     <Normal>
-      <Title title={documentData.title} date={documentData.date} />
+      <Title
+        docId={params.id}
+        title={documentData.title}
+        date={documentData.date}
+        thumbnailPath={documentData.thumbnailPath}
+      />
       <Content data={documentData.content} />
       <CommentMain />
     </Normal>

@@ -8,15 +8,20 @@ export interface docState {
   imageFile: string;
 }
 
+export interface addPostReturn {
+  data: any;
+  status: number;
+}
+
 type PostsResponse = docState[];
 
 export type CtgList = { code: number; categoryList: { id: number; type: string; name: string; num: number }[] };
 export const postApi = createApi({
   reducerPath: 'postApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/community' }),
+  baseQuery: fetchBaseQuery({ baseUrl: `http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community` }),
   tagTypes: ['post'],
   endpoints: (build) => ({
-    addPost: build.mutation<docState, Partial<docState>>({
+    addPost: build.mutation<addPostReturn, Partial<docState>>({
       query(data) {
         const { token, ctg, ...body } = data;
         return {
@@ -32,7 +37,17 @@ export const postApi = createApi({
     getCtgList: build.query<CtgList, null>({
       query: () => ({ url: `category`, method: 'GET' }),
     }),
+    deletePost: build.mutation({
+      query({ id, token }) {
+        return {
+          url: `post/${id}`,
+          headers: { authorization: token },
+          method: 'DELETE',
+        };
+      },
+      invalidatesTags: [{ type: 'post' }],
+    }),
   }),
 });
 
-export const { useAddPostMutation, useGetCtgListQuery } = postApi;
+export const { useAddPostMutation, useGetCtgListQuery, useDeletePostMutation } = postApi;

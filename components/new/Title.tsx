@@ -10,26 +10,11 @@ function Title({ ctg }: { ctg: string }) {
   const dispatch = useAppDispatch();
   const title = useAppSelector((state) => state.docFormReducer.title);
   const documentInfo = useAppSelector((state) => state.docFormReducer);
-  const [addPost, { isLoading: isUpdating }] = useAddPostMutation();
+  const [addPost] = useAddPostMutation();
   const [{ token }] = useCookies();
   const router = useRouter();
-  const [submit, setSubmit] = useState(0);
 
   const params = useParams();
-  console.log(documentInfo);
-  console.log(params);
-
-  useEffect(() => {
-    if (isUpdating) {
-      console.log('updating');
-    } else if (submit == 1) {
-      console.log('end');
-      router.push('/');
-    } else {
-      console.log('end');
-    }
-    isUpdating ? console.log('updating') : console.log('end');
-  }, [isUpdating]);
   return (
     <div className={styles.titleBox}>
       <div className={styles.titleHead}>
@@ -43,8 +28,15 @@ function Title({ ctg }: { ctg: string }) {
         />
         <button
           onClick={() => {
-            addPost({ ...documentInfo, ctg, token });
-            setSubmit(1);
+            addPost({ ...documentInfo, ctg, token })
+              .unwrap()
+              .then(() => {
+                alert('작성 완료');
+                router.push('/');
+              })
+              .catch((data) => {
+                if (data.status == 419) alert('권한이 없습니다.');
+              });
           }}
           className={styles.submit}
         >

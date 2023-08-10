@@ -7,7 +7,7 @@ export interface loginBody {
 
 export const sessionApi = createApi({
   reducerPath: 'sessionApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/session' }),
+  baseQuery: fetchBaseQuery({ baseUrl: `http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/session` }),
   tagTypes: ['session'],
   endpoints: (build) => ({
     login: build.mutation<{ code: number; message?: string; token?: string }, Partial<loginBody>>({
@@ -21,7 +21,17 @@ export const sessionApi = createApi({
       },
       invalidatesTags: [{ type: 'session' }],
     }),
+    logout: build.mutation({
+      query(token) {
+        return {
+          url: `logout`,
+          method: 'POST',
+          headers: { authorization: token },
+          credentials: 'include',
+        };
+      },
+    }),
   }),
 });
 
-export const { useLoginMutation } = sessionApi;
+export const { useLoginMutation, useLogoutMutation } = sessionApi;

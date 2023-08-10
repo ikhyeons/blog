@@ -9,7 +9,7 @@ export interface joinBody {
 
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/user' }),
+  baseQuery: fetchBaseQuery({ baseUrl: `http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/user` }),
   tagTypes: ['user'],
   endpoints: (build) => ({
     joinUser: build.mutation<{ code: number; message: string }, Partial<joinBody>>({

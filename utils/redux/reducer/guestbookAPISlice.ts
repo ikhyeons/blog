@@ -9,7 +9,7 @@ type PostsResponse = guestBookState[];
 
 export const guestBookApi = createApi({
   reducerPath: 'guestbookApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/guestBook' }),
+  baseQuery: fetchBaseQuery({ baseUrl: `http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/guestBook` }),
   tagTypes: ['guestbookApi'],
   endpoints: (build) => ({
     addGuestbook: build.mutation<guestBookState, Partial<guestBookState>>({

@@ -3,11 +3,13 @@ import styles from '@/styles/components/new/New.module.scss';
 import { usePostImageMutation } from '@/utils/redux/reducer/imageAPISlice';
 import { setThumbnail } from '@/utils/redux/reducer/docFormSlice';
 import { useAppDispatch } from '@/utils/hooks/redux';
+import { useCookies } from 'react-cookie';
 function Thumbnail() {
   const dispatch = useAppDispatch();
   const [isSelected, setIsSelected] = useState(false);
   const [postImage, { isLoading: isUpdating }] = usePostImageMutation();
   const [path, setPath] = useState('');
+  const [{ token }] = useCookies();
   return (
     <div className="">
       {isSelected ? (
@@ -16,7 +18,7 @@ function Thumbnail() {
             setIsSelected(false);
           }}
           className={styles.imageWrap}
-          src={`http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/${path}`}
+          src={`http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/image/${path}`}
         />
       ) : (
         <>
@@ -30,12 +32,11 @@ function Thumbnail() {
               console.log(e.target.files);
               payload.append('img', e.target.files![0]);
 
-              postImage(payload)
+              postImage({ body: payload, token: token })
                 .unwrap()
                 .then((data) => {
-                  console.log('gd');
                   dispatch(setThumbnail(data.imageId));
-                  setPath(data.imageId);
+                  setPath(data.imagePath);
                 });
             }}
             style={{ display: 'none' }}
