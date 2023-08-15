@@ -26,7 +26,7 @@ export default page;
 
 async function getCardList({ ctg, page }: { ctg: string; page: number }) {
   const fetchData = await (
-    await fetch(`http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/list/${ctg}`, {
+    await fetch(`https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/list/${ctg}`, {
       method: 'get',
       cache: 'no-store',
     })

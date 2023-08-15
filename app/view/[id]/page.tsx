@@ -22,7 +22,7 @@ async function page({ params }: { params: { id: number } }) {
 
 async function getDocumentData(number: number) {
   const data = await (
-    await fetch(`http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/post/${number}`, { method: 'GET' })
+    await fetch(`https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/post/${number}`, { method: 'GET' })
   ).json();
 
   return data.document[0];
