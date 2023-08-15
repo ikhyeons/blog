@@ -26,7 +26,7 @@ function Title({
         <img
           width={200}
           height={200}
-          src={`http://${process.env.NEXT_PUBLIC_BACKEND_HOST}/image/${thumbnailPath}`}
+          src={`https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/image/${thumbnailPath}`}
           alt="포스트 썸네일 사진"
           className={styles.titleImg}
         />
