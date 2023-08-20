@@ -18,7 +18,7 @@ function Thumbnail() {
             setIsSelected(false);
           }}
           className={styles.imageWrap}
-          src={`https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/image/${path}`}
+          src={`${path}`}
         />
       ) : (
         <>
