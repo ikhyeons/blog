@@ -27,7 +27,7 @@ function DocCard({
             width={200}
             height={200}
             style={{ width: '260px', height: '300px' }}
-            src={`https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/image/${cardData.thumbnailPath}`}
+            src={`${cardData.thumbnailPath}`}
             alt="글 리스트 사진"
           />
         ) : null}
