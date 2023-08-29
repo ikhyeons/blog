@@ -47,7 +47,16 @@ export const postApi = createApi({
       },
       invalidatesTags: [{ type: 'post' }],
     }),
+    addLove: build.mutation({
+      query(id) {
+        return {
+          url: `love/${id}`,
+          method: 'PATCH',
+        };
+      },
+      invalidatesTags: [{ type: 'post' }],
+    }),
   }),
 });
 
-export const { useAddPostMutation, useGetCtgListQuery, useDeletePostMutation } = postApi;
+export const { useAddPostMutation, useGetCtgListQuery, useDeletePostMutation, useAddLoveMutation } = postApi;
