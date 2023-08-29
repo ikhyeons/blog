@@ -13,6 +13,7 @@ async function page({ params }: { params: { id: number } }) {
         title={documentData.title}
         date={documentData.date}
         thumbnailPath={documentData.thumbnailPath}
+        love={documentData.love}
       />
       <Content data={documentData.content} />
       <CommentMain />
