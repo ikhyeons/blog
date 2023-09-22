@@ -5,12 +5,12 @@ import styles from '@/styles/components/view/view.module.scss';
 function List() {
   return (
     <ul>
-      <Card indent={false} />
-      <Card indent={true} />
-      <Card indent={false} />
-      <Card indent={true} />
-      <Card indent={true} />
-      <Card indent={true} />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </ul>
   );
 }

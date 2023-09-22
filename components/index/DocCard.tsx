@@ -30,7 +30,16 @@ function DocCard({
             src={`${cardData.thumbnailPath}`}
             alt="글 리스트 사진"
           />
-        ) : null}
+        ) : (
+          <Image
+            style={{ borderRadius: '10px' }}
+            className={styles.thumnail}
+            src={`/noImage.png`}
+            width={200}
+            height={200}
+            alt="이미지 없음"
+          />
+        )}
         <div className={styles.viewLine}>
           <span>{getTimeByNow(cardData.date)}</span>
           <span>
