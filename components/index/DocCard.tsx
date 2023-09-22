@@ -35,8 +35,8 @@ function DocCard({
             style={{ borderRadius: '10px' }}
             className={styles.thumnail}
             src={`/noImage.png`}
-            width={200}
-            height={200}
+            width={260}
+            height={300}
             alt="이미지 없음"
           />
         )}
