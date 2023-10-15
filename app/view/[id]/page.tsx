@@ -5,7 +5,17 @@ import Content from '@/components/view/Content';
 
 async function page({ params }: { params: { id: number } }) {
   const documentData = await getDocumentData(params.id);
-  console.log(documentData);
+  const commentList: {
+    id: number;
+    writerID: number;
+    nickname: string;
+    refID?: number;
+    documentID: number;
+    Content: string;
+    date: string;
+    love: number;
+    del: number;
+  }[] = await getCommentList(params.id);
   return (
     <Normal>
       <Title
@@ -16,7 +26,7 @@ async function page({ params }: { params: { id: number } }) {
         love={documentData.love}
       />
       <Content data={documentData.content} />
-      <CommentMain />
+      <CommentMain commentList={commentList} />
     </Normal>
   );
 }
@@ -30,6 +40,17 @@ async function getDocumentData(number: number) {
   ).json();
 
   return data.document[0];
+}
+
+async function getCommentList(number: number) {
+  const data = await (
+    await fetch(`https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/comment/${number}`, {
+      method: 'GET',
+      cache: 'no-store',
+    })
+  ).json();
+
+  return data.commentList;
 }
 
 export default page;

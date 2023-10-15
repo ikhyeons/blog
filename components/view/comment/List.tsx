@@ -1,16 +1,26 @@
 import React from 'react';
 import Card from './Card';
-import styles from '@/styles/components/view/view.module.scss';
 
-function List() {
+function List({
+  commentList,
+}: {
+  commentList: {
+    id: number;
+    writerID: number;
+    nickname: string;
+    refID?: number;
+    documentID: number;
+    Content: string;
+    date: string;
+    love: number;
+    del: number;
+  }[];
+}) {
   return (
     <ul>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {commentList.map((data, i) => (
+        <Card key={i} data={data} />
+      ))}
     </ul>
   );
 }

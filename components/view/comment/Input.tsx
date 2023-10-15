@@ -5,9 +5,10 @@ function Input() {
   return (
     <div
       onKeyUp={(e) => {
-        if (e.key == 'Enter' && e.shiftKey) {
+        if (e.key == 'Enter' && !e.shiftKey) {
           e.preventDefault();
           alert('입력');
+        } else {
         }
       }}
       className={styles.inputWrap}

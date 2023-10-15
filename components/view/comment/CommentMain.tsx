@@ -5,7 +5,21 @@ import styles from '@/styles/components/view/view.module.scss';
 import Ctg from './Ctg';
 import { useState } from 'react';
 
-function CommentMain() {
+function CommentMain({
+  commentList,
+}: {
+  commentList: {
+    id: number;
+    writerID: number;
+    nickname: string;
+    refID?: number;
+    documentID: number;
+    Content: string;
+    date: string;
+    love: number;
+    del: number;
+  }[];
+}) {
   const [isOn, setIsOn] = useState(false);
   return (
     <section className={styles.commentBox}>
@@ -13,7 +27,7 @@ function CommentMain() {
       {isOn ? (
         <div className={styles.commentWrap}>
           <Input />
-          <List />
+          <List commentList={commentList} />
         </div>
       ) : null}
     </section>
