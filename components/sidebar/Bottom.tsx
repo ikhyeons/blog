@@ -9,12 +9,13 @@ import { useRouter } from 'next/navigation';
 function Bottom() {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(false);
+  const [cookie, , removeCookie] = useCookies();
   useEffect(() => {
-    if (token) setIsLogin(true);
+    if (cookie.token) setIsLogin(true);
     else setIsLogin(false);
-  }, []);
-  const [{ token }] = useCookies();
-  const [logout, { isLoading: isUpdating }] = useLogoutMutation();
+  }, [cookie.token]);
+
+  const [logout] = useLogoutMutation();
   return (
     <div className={styles.sidebarBottom}>
       <div className={styles.linkBox}>
@@ -28,12 +29,8 @@ function Bottom() {
       {isLogin ? (
         <button
           onClick={() => {
-            logout(token)
-              .unwrap()
-              .then(() => {
-                setIsLogin(false);
-                ``;
-              });
+            removeCookie('token', { path: '/' });
+            logout(cookie.token);
           }}
           className={`${styles.loginBtn} ${styles.active}`}
         >

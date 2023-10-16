@@ -22,6 +22,7 @@ function Card({
   };
 }) {
   const dispatch = useAppDispatch();
+
   return (
     <li className={`${styles.card}`}>
       <p>

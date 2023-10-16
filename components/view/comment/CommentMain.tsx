@@ -24,6 +24,7 @@ function CommentMain({
   documentData: any;
 }) {
   const [isOn, setIsOn] = useState(false);
+  console.log(commentList);
   return (
     <section className={styles.commentBox}>
       <Ctg isOn={isOn} setIsOn={setIsOn} />

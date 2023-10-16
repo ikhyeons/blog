@@ -55,7 +55,8 @@ function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'m
             setEmail(e.target.value);
           }}
           onKeyDown={(e) => {
-            if (e.key == 'Enter') {
+            console.log(e);
+            if (e.key == 'Enter' || e.code == 'Tab') {
               setStep(2);
               emailInput.current?.blur();
             }
