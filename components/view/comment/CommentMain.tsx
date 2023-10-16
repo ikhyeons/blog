@@ -19,6 +19,7 @@ function CommentMain({
     date: string;
     love: number;
     del: number;
+    refNickname: string;
   }[];
   documentData: any;
 }) {

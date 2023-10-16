@@ -14,6 +14,7 @@ function List({
     date: string;
     love: number;
     del: number;
+    refNickname: string;
   }[];
 }) {
   return (

@@ -18,6 +18,7 @@ function Card({
     date: string;
     love: number;
     del: number;
+    refNickname: string;
   };
 }) {
   const dispatch = useAppDispatch();
@@ -37,7 +38,7 @@ function Card({
         <span>
           <FiThumbsUp /> {data.love}
         </span>
-        {data.refID ? <span style={{ marginLeft: '30px' }}> → 잠자는오리</span> : null}
+        {data.refID ? <span style={{ marginLeft: '30px' }}> → {data.refNickname}</span> : null}
       </p>
       <p className={styles.content}>{data.Content}</p>
     </li>
