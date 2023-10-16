@@ -3,9 +3,11 @@ import styles from '@/styles/components/view/view.module.scss';
 import { useAddCommentMutation } from '@/utils/redux/reducer/communityAPISlice';
 import { useCookies } from 'react-cookie';
 import RefBar from './RefBar';
-import { useAppDispatch, useAppSelector } from '@/utils/hooks/redux';
+import { useAppSelector } from '@/utils/hooks/redux';
+import { useRouter } from 'next/router';
 
 function Input({ documentData }: { documentData: any }) {
+  const router = useRouter();
   const [{ token }] = useCookies();
   const [addComment] = useAddCommentMutation();
   const [content, setContent] = useState('');
@@ -21,7 +23,15 @@ function Input({ documentData }: { documentData: any }) {
         onKeyUp={(e) => {
           if (e.key == 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            addComment({ token, documentID: documentData.id, content: content, refID: commentRef.target });
+            addComment({ token, documentID: documentData.id, content: content, refID: commentRef.target })
+              .unwrap()
+              .then(() => {
+                alert('작성 완료');
+                router.reload();
+              })
+              .catch((data) => {
+                if (data.status == 419) alert(data.message);
+              });
           }
         }}
         cols={2}
