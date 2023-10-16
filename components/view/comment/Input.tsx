@@ -29,8 +29,8 @@ function Input({ documentData }: { documentData: any }) {
                 alert('작성 완료');
                 router.refresh();
               })
-              .catch((data) => {
-                if (data.status == 419) alert(data.message);
+              .catch(() => {
+                alert('다시 로그인 후 시동하세요');
               });
           }
         }}
