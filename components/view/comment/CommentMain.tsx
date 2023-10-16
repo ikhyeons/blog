@@ -26,8 +26,7 @@ function CommentMain({
   const [isOn, setIsOn] = useState(false);
   return (
     <section className={styles.commentBox}>
-      <Ctg isOn={isOn} setIsOn={setIsOn} />
-      <span>{' ' + commentList.length}</span>
+      <Ctg isOn={isOn} number={commentList.length} setIsOn={setIsOn} />
       {isOn ? (
         <div className={styles.commentWrap}>
           <Input documentData={documentData} />
