@@ -4,7 +4,7 @@ import { useAddCommentMutation } from '@/utils/redux/reducer/communityAPISlice';
 import { useCookies } from 'react-cookie';
 import RefBar from './RefBar';
 import { useAppSelector } from '@/utils/hooks/redux';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 function Input({ documentData }: { documentData: any }) {
   const router = useRouter();
@@ -27,7 +27,7 @@ function Input({ documentData }: { documentData: any }) {
               .unwrap()
               .then(() => {
                 alert('작성 완료');
-                router.reload();
+                router.refresh();
               })
               .catch((data) => {
                 if (data.status == 419) alert(data.message);
