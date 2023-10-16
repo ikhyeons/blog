@@ -15,6 +15,7 @@ async function page({ params }: { params: { id: number } }) {
     date: string;
     love: number;
     del: number;
+    refNickname: string;
   }[] = await getCommentList(params.id);
   return (
     <Normal>
