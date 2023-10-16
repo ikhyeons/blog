@@ -6,6 +6,7 @@ import Ctg from './Ctg';
 import { useState } from 'react';
 
 function CommentMain({
+  documentData,
   commentList,
 }: {
   commentList: {
@@ -19,6 +20,7 @@ function CommentMain({
     love: number;
     del: number;
   }[];
+  documentData: any;
 }) {
   const [isOn, setIsOn] = useState(false);
   return (
@@ -26,7 +28,7 @@ function CommentMain({
       <Ctg isOn={isOn} setIsOn={setIsOn} />
       {isOn ? (
         <div className={styles.commentWrap}>
-          <Input />
+          <Input documentData={documentData} />
           <List commentList={commentList} />
         </div>
       ) : null}

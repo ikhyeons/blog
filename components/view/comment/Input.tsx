@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '@/styles/components/view/view.module.scss';
+import { useAddCommentMutation } from '@/utils/redux/reducer/communityAPISlice';
+import { useCookies } from 'react-cookie';
+import RefBar from './RefBar';
+import { useAppDispatch, useAppSelector } from '@/utils/hooks/redux';
 
-function Input() {
+function Input({ documentData }: { documentData: any }) {
+  const [{ token }] = useCookies();
+  const [addComment] = useAddCommentMutation();
+  const [content, setContent] = useState('');
+  const commentRef = useAppSelector((state) => state.commentRefReducer);
+
   return (
-    <div
-      onKeyUp={(e) => {
-        if (e.key == 'Enter' && !e.shiftKey) {
-          e.preventDefault();
-          alert('입력');
-        } else {
-        }
-      }}
-      className={styles.inputWrap}
-    >
-      <textarea cols={2} className={styles.input} />
+    <div className={styles.inputWrap}>
+      {commentRef.refOn ? <RefBar /> : null}
+      <textarea
+        onChange={(e) => {
+          setContent(e.target.value);
+        }}
+        onKeyUp={(e) => {
+          if (e.key == 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            addComment({ token, documentID: documentData.id, content: content, refID: commentRef.target });
+          }
+        }}
+        cols={2}
+        className={styles.input}
+      />
     </div>
   );
 }

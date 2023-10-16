@@ -2,6 +2,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import modalReducer from './reducer/modalSlice';
 import docFormReducer from './reducer/docFormSlice';
+import commentRefReducer from './reducer/commentSlice';
+
 import { postApi } from './reducer/communityAPISlice';
 import { userApi } from './reducer/userAPISlice';
 import { sessionApi } from './reducer/sessionAPISlice';
@@ -12,6 +14,7 @@ export const store = configureStore({
   reducer: {
     modalReducer,
     docFormReducer,
+    commentRefReducer,
     [postApi.reducerPath]: postApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [sessionApi.reducerPath]: sessionApi.reducer,

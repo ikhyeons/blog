@@ -26,7 +26,7 @@ async function page({ params }: { params: { id: number } }) {
         love={documentData.love}
       />
       <Content data={documentData.content} />
-      <CommentMain commentList={commentList} />
+      <CommentMain documentData={documentData} commentList={commentList} />
     </Normal>
   );
 }

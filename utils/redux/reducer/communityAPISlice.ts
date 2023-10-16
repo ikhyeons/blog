@@ -56,7 +56,25 @@ export const postApi = createApi({
       },
       invalidatesTags: [{ type: 'post' }],
     }),
+    addComment: build.mutation({
+      query(data) {
+        const { token, ...body } = data;
+        return {
+          url: `comment`,
+          headers: { authorization: token },
+          method: 'POST',
+          body: { ...body },
+        };
+      },
+      invalidatesTags: [{ type: 'post' }],
+    }),
   }),
 });
 
-export const { useAddPostMutation, useGetCtgListQuery, useDeletePostMutation, useAddLoveMutation } = postApi;
+export const {
+  useAddPostMutation,
+  useGetCtgListQuery,
+  useDeletePostMutation,
+  useAddLoveMutation,
+  useAddCommentMutation,
+} = postApi;

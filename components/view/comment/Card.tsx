@@ -2,6 +2,9 @@ import React from 'react';
 import styles from '@/styles/components/view/view.module.scss';
 import { FiThumbsUp } from 'react-icons/fi';
 import { getTimeByNow } from '@/utils/functions/time';
+import { useAppDispatch, useAppSelector } from '@/utils/hooks/redux';
+import { updateRef } from '@/utils/redux/reducer/commentSlice';
+
 function Card({
   data,
 }: {
@@ -17,13 +20,20 @@ function Card({
     del: number;
   };
 }) {
-  console.log(data);
+  const dispatch = useAppDispatch();
   return (
     <li className={`${styles.card}`}>
       <p>
         <span style={{ marginRight: '10px' }}>{data.nickname}</span>
         <span style={{ marginRight: '10px' }}>{getTimeByNow(data.date)}</span>
-        <span style={{ marginRight: '10px' }}>답글</span>
+        <span
+          onClick={() => {
+            dispatch(updateRef({ target: data.writerID, targetName: data.nickname }));
+          }}
+          style={{ marginRight: '10px' }}
+        >
+          답글
+        </span>
         <span>
           <FiThumbsUp /> {data.love}
         </span>
