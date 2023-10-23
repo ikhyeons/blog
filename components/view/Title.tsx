@@ -15,8 +15,6 @@ function Title({
   docId: number;
   love: number;
 }) {
-  console.log(thumbnailPath);
-
   return (
     <div className={styles.titleWrap}>
       <HandleLine docId={docId} date={date} />

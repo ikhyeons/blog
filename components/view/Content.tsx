@@ -1,9 +1,5 @@
-'use client';
-
 import styles from '@/styles/components/view/view.module.scss';
-
-import '@toast-ui/editor/dist/toastui-editor-viewer.css';
-import './toastui-css-wrapper.css';
+import styles2 from '@/styles/components/view/content.module.scss';
 import 'highlight.js/styles/tokyo-night-dark.css';
 
 import { Viewer } from '@toast-ui/react-editor';
@@ -11,7 +7,7 @@ import { Viewer } from '@toast-ui/react-editor';
 function Content({ data }: { data: string }) {
   return (
     <article className={styles.mainContent}>
-      <Viewer initialValue={data} />
+      <div className={styles2.innerContent} dangerouslySetInnerHTML={{ __html: data }}></div>
     </article>
   );
 }

@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import styles from '@/styles/components/ctg/ctg.module.scss';
 import Link from 'next/link';
@@ -51,7 +52,7 @@ function DocCard({
           )}
           <article>
             <p className={styles.title}>{`${cardData.title}`}</p>
-            <p className={styles.summary}>{`${cardData.content}`}</p>
+            <div className={styles.summary} dangerouslySetInnerHTML={{ __html: cardData.content }}></div>
             <p className={styles.viewLine}>
               <span>{getTimeByNow(cardData.date)}</span>
               <span>
