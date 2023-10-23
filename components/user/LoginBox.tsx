@@ -28,7 +28,7 @@ function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'m
     if (step == 2) {
       setTimeout(() => {
         pwInput.current?.focus();
-      }, 20);
+      }, 25);
     }
   }, [step]);
 
@@ -57,6 +57,7 @@ function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'m
           onKeyDown={(e) => {
             console.log(e);
             if (e.key == 'Enter' || e.code == 'Tab') {
+              e.preventDefault();
               setStep(2);
               emailInput.current?.blur();
             }

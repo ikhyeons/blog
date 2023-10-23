@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { VscEye } from 'react-icons/vsc';
 import { FiThumbsUp } from 'react-icons/fi';
 import { getTimeByNow } from '@/utils/functions/time';
+import { useIncreaseViewMutation } from '@/utils/redux/reducer/communityAPISlice';
 
 function DocCard({
   cardData,
@@ -19,8 +20,14 @@ function DocCard({
     date: string;
   };
 }) {
+  const [increaseView] = useIncreaseViewMutation();
   return (
-    <li className={styles.docCard}>
+    <li
+      onClick={() => {
+        increaseView(cardData.id);
+      }}
+      className={styles.docCard}
+    >
       <Link href={`/view/${cardData.id}`}>
         <div className={styles.docCardWrap}>
           {cardData.thumbnailPath ? (

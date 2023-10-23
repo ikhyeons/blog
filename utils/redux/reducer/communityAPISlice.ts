@@ -68,6 +68,15 @@ export const postApi = createApi({
       },
       invalidatesTags: [{ type: 'post' }],
     }),
+    increaseView: build.mutation({
+      query(id) {
+        return {
+          url: `view/${id}`,
+          method: 'PATCH',
+        };
+      },
+      invalidatesTags: [{ type: 'post' }],
+    }),
   }),
 });
 
@@ -77,4 +86,5 @@ export const {
   useDeletePostMutation,
   useAddLoveMutation,
   useAddCommentMutation,
+  useIncreaseViewMutation,
 } = postApi;

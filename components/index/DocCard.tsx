@@ -1,9 +1,11 @@
+'use client';
 import styles from '@/styles/components/index/docList.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { VscEye } from 'react-icons/vsc';
 import { FiThumbsUp } from 'react-icons/fi';
 import { getTimeByNow } from '@/utils/functions/time';
+import { useIncreaseViewMutation } from '@/utils/redux/reducer/communityAPISlice';
 
 function DocCard({
   cardData,
@@ -18,9 +20,15 @@ function DocCard({
     date: string;
   };
 }) {
+  const [increaseView] = useIncreaseViewMutation();
   return (
     <Link href={`/view/${cardData.id}`}>
-      <li className={styles.docCard}>
+      <li
+        onClick={() => {
+          increaseView(cardData.id);
+        }}
+        className={styles.docCard}
+      >
         {cardData.thumbnailPath ? (
           <img
             className={styles.cardImg}
