@@ -51,18 +51,27 @@
   }
 }
 
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
 @media screen and (max-width: 768px) {
   .header {
     height: 50px;
     transform: translateY(0px);
-    position: relative;
+    position: fixed;
+    width: 100%;
     z-index: 100;
     .categoryList {
       display: flex;
       width: 100%;
       background: var(--highlight);
       flex-direction: column;
-
+      padding-bottom: 5px;
       a {
         width: calc(100% - 10px);
         margin-left: 5px;

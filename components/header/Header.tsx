@@ -3,6 +3,7 @@ import styles from '@/styles/components/layout/Header.module.scss';
 import CategoryList from './CategoryList';
 import Menu from './Menu';
 import Hamberger from './Hamberger';
+import Search from './Search';
 async function Header() {
   const menuList = [
     { name: 'Main', adrr: '/', blank: false },
@@ -19,6 +20,7 @@ async function Header() {
         {menuList.map((data, i) => (
           <Menu key={i} name={data.name} adrr={data.adrr} blank={data.blank} />
         ))}
+        <Search />
         <Hamberger />
       </div>
       <CategoryList data={categoryData} />

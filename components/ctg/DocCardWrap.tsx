@@ -15,7 +15,6 @@ function DocCardWrap({
     date: string;
   }[];
 }) {
-  console.log(cardList);
   return (
     <ul>
       {cardList.map((data, i) => (
