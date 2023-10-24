@@ -4,6 +4,7 @@ import { useDeletePostMutation } from '@/utils/redux/reducer/communityAPISlice';
 import { useCookies } from 'react-cookie';
 import styles from '@/styles/components/view/view.module.scss';
 import { getTimeH } from '@/utils/functions/time';
+import Link from 'next/link';
 
 function HandleLine({ docId, date }: { docId: number; date: string }) {
   const [deletePost, { isLoading: isUpdating }] = useDeletePostMutation();
@@ -11,7 +12,10 @@ function HandleLine({ docId, date }: { docId: number; date: string }) {
 
   return (
     <div className={styles.docInfo}>
-      <span className={styles.modifyBtn}>수정</span>
+      <Link href={`/modify/${docId}`}>
+        <span className={styles.modifyBtn}>수정</span>
+      </Link>
+
       <span
         onClick={() => {
           deletePost({ id: docId, token: token });

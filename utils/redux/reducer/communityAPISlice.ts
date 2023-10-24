@@ -3,9 +3,13 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export interface docState {
   title: string;
   content: string;
-  ctg: string;
+  ctg?: string;
   token: string;
   imageFile: string;
+}
+
+export interface modifyDoc extends docState {
+  id: number;
 }
 
 export interface addPostReturn {
@@ -29,6 +33,18 @@ export const postApi = createApi({
           headers: { authorization: token },
           method: 'POST',
           body: { ...body, categoryType: ctg },
+        };
+      },
+      invalidatesTags: [{ type: 'post' }],
+    }),
+    modifyPost: build.mutation<addPostReturn, Partial<modifyDoc>>({
+      query(data) {
+        const { token, id, ...body } = data;
+        return {
+          url: `post`,
+          headers: { authorization: token },
+          method: 'PATCH',
+          body: { ...body, id: id },
         };
       },
       invalidatesTags: [{ type: 'post' }],
@@ -82,6 +98,7 @@ export const postApi = createApi({
 
 export const {
   useAddPostMutation,
+  useModifyPostMutation,
   useGetCtgListQuery,
   useDeletePostMutation,
   useAddLoveMutation,
