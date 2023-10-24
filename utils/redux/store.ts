@@ -3,6 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import modalReducer from './reducer/modalSlice';
 import docFormReducer from './reducer/docFormSlice';
 import commentRefReducer from './reducer/commentSlice';
+import headerCtgReducer from './reducer/layoutSlice';
 
 import { postApi } from './reducer/communityAPISlice';
 import { userApi } from './reducer/userAPISlice';
@@ -15,6 +16,7 @@ export const store = configureStore({
     modalReducer,
     docFormReducer,
     commentRefReducer,
+    headerCtgReducer,
     [postApi.reducerPath]: postApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [sessionApi.reducerPath]: sessionApi.reducer,

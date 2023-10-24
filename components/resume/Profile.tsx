@@ -4,7 +4,7 @@ import Image from 'next/image';
 function Profile() {
   return (
     <div className={styles.profileBox}>
-      <Image src="duckProfile.jpg" alt="" />
+      <Image src="/duckProfile.jpg" alt="" width={300} height={300} />
       <div className={styles.profile}>
         <p>성익현 | 프론트엔드 개발자</p>
         <p>

@@ -4,3 +4,9 @@
   width: 100%;
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 1366px) {
+  .guestBookLine {
+    flex-direction: column;
+  }
+}
