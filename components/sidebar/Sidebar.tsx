@@ -7,12 +7,15 @@ import Link from 'next/dist/client/link';
 function Sidebar() {
   return (
     <aside className={styles.sidebar}>
-      <div className={styles.goMain}>
-        <Link href={'/'}>메인으로 가기</Link>
+      <div className={styles.ghost}></div>
+      <div className={styles.innerWrap}>
+        <div className={styles.goMain}>
+          <Link href={'/'}>메인으로 가기</Link>
+        </div>
+        <Profile />
+        <Category />
+        <Bottom />
       </div>
-      <Profile />
-      <Category />
-      <Bottom />
     </aside>
   );
 }

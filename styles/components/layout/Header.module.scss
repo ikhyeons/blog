@@ -54,11 +54,30 @@
 .iconWrap {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   cursor: pointer;
   width: 30px;
   height: 30px;
 }
+
+.inputWrap {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: var(--highlight);
+  .searchIcon {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+  }
+  .searchInput {
+    width: 70%;
+    font-size: 18px;
+    margin: 3px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .header {
     height: 50px;

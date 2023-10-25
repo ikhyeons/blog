@@ -4,6 +4,7 @@ import CategoryList from './CategoryList';
 import Menu from './Menu';
 import Hamberger from './Hamberger';
 import Search from './Search';
+import HeaderSearch from './HeaderSearch';
 async function Header() {
   const menuList = [
     { name: 'Main', adrr: '/', blank: false },
@@ -24,6 +25,7 @@ async function Header() {
         <Hamberger />
       </div>
       <CategoryList data={categoryData} />
+      <HeaderSearch />
     </header>
   );
 }
