@@ -11,6 +11,7 @@
   a {
     color: lightgreen;
     margin: 10px 0;
+    line-break: anywhere;
     &:hover {
       text-decoration: underline;
     }
@@ -39,6 +40,14 @@
       &::before {
         content: '- '; // *모양을 앞에 생성합니다.
       }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .innerContent {
+    img {
+      width: 100%;
     }
   }
 }
