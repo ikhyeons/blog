@@ -92,3 +92,10 @@
     cursor: pointer;
   }
 }
+@media screen and (max-width: 768px) {
+  .titleWrap {
+    .titleImg {
+      width: 100%;
+    }
+  }
+}
