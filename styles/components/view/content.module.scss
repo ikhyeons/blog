@@ -3,8 +3,41 @@
     padding: 10px;
     margin: 15px 0px;
     border-radius: 5px;
-    user-select: text;
+    user-select: all;
     border: 1px solid rgb(66, 66, 66);
     background: linear-gradient(135deg, rgb(56, 56, 56), rgb(40, 40, 40));
+  }
+
+  a {
+    color: lightgreen;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  img {
+    width: 70%;
+  }
+  strong {
+    margin: 15px;
+    display: flex;
+    font-size: 20px;
+  }
+  p {
+    font-size: 18px;
+    margin: 5px;
+  }
+  h2 {
+    margin: 10px 0;
+    font-size: 25px;
+  }
+  ul {
+    padding-left: 10px;
+    li {
+      margin: 8px;
+      font-size: 18px;
+      &::before {
+        content: '- '; // *모양을 앞에 생성합니다.
+      }
+    }
   }
 }
