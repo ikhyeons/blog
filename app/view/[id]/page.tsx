@@ -21,6 +21,8 @@ async function page({ params }: { params: { id: number } }) {
     <>
       <title>{documentData.title}</title>
       <meta name="description" content={`성익현의 블로그 - ${documentData.title}`} />
+      <meta property="og:description" content={`성익현의 블로그 - ${documentData.title}`} />
+      <meta property="og:image" content={documentData.thumbnailPath} />
 
       <Normal>
         <Title

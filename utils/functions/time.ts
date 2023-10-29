@@ -1,5 +1,5 @@
 export function getTime(timeString: string) {
-  const date = new Date(timeString);
+  const date = new Date(new Date(timeString).getTime() + -540 * 60 * 1000);
 
   const year = String(date.getFullYear());
   const month = String(date.getMonth() + 1);
@@ -7,17 +7,17 @@ export function getTime(timeString: string) {
 
   const trimMonth = month.length == 1 ? ` ${month}` : month;
   const trimday = month.length == 1 ? ` ${day}` : day;
-
   return `${year}.${trimMonth}.${trimday}`;
 }
 
 export function getTimeByNow(timeString: string) {
-  const date = new Date(timeString);
+  const date = new Date(new Date(timeString).getTime() + -540 * 60 * 1000);
   const now = new Date();
 
   const milliSeconds = Number(now) - Number(date);
 
   const seconds = milliSeconds / 1000;
+
   if (seconds < 60) return `방금 전`;
   const minutes = seconds / 60;
   if (minutes < 60) return `${Math.floor(minutes)}분 전`;
@@ -30,7 +30,7 @@ export function getTimeByNow(timeString: string) {
 }
 
 export function getTimeH(timeString: string) {
-  const date = new Date(timeString);
+  const date = new Date(new Date(timeString).getTime() + -540 * 60 * 1000);
 
   const year = String(date.getFullYear());
   const month = String(date.getMonth() + 1);

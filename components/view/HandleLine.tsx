@@ -9,7 +9,6 @@ import Link from 'next/link';
 function HandleLine({ docId, date }: { docId: number; date: string }) {
   const [deletePost, { isLoading: isUpdating }] = useDeletePostMutation();
   const [{ token }] = useCookies();
-
   return (
     <div className={styles.docInfo}>
       <Link href={`/modify/${docId}`}>
