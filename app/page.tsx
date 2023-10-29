@@ -5,9 +5,13 @@ export default async function Home() {
   const postList = await getDocumentData();
   const guestBookList = await getGuestBookData();
   return (
-    <Normal>
-      <Index postList={postList} guestbookList={guestBookList} />
-    </Normal>
+    <>
+      <title>익현 blog</title>
+      <meta name="description" content={'성익현의 블로그 입니다.'} />
+      <Normal>
+        <Index postList={postList} guestbookList={guestBookList} />
+      </Normal>
+    </>
   );
 }
 

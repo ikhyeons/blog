@@ -2,6 +2,7 @@ import Title from '@/components/view/Title';
 import CommentMain from '@/components/view/comment/CommentMain';
 import Normal from '@/layouts/Normal';
 import Content from '@/components/view/Content';
+import Head from 'next/head';
 
 async function page({ params }: { params: { id: number } }) {
   const documentData = await getDocumentData(params.id);
@@ -18,17 +19,21 @@ async function page({ params }: { params: { id: number } }) {
     refNickname: string;
   }[] = await getCommentList(params.id);
   return (
-    <Normal>
-      <Title
-        docId={params.id}
-        title={documentData.title}
-        date={documentData.date}
-        thumbnailPath={documentData.thumbnailPath}
-        love={documentData.love}
-      />
-      <Content data={documentData.content} />
-      <CommentMain documentData={documentData} commentList={commentList} />
-    </Normal>
+    <>
+      <title>{documentData.title}</title>
+      <meta name="description" content={`성익현의 블로그 - ${documentData.title}`} />
+      <Normal>
+        <Title
+          docId={params.id}
+          title={documentData.title}
+          date={documentData.date}
+          thumbnailPath={documentData.thumbnailPath}
+          love={documentData.love}
+        />
+        <Content data={documentData.content} />
+        <CommentMain documentData={documentData} commentList={commentList} />
+      </Normal>
+    </>
   );
 }
 
