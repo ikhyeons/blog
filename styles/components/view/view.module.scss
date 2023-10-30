@@ -94,6 +94,11 @@
 }
 @media screen and (max-width: 768px) {
   .titleWrap {
+    .title {
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: 200;
+    }
     .titleImg {
       width: 100%;
     }
