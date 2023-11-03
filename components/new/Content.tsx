@@ -10,6 +10,7 @@ const ReactQuill = dynamic(() => import('react-quill'), {
 import 'react-quill/dist/quill.snow.css';
 import { useAppDispatch, useAppSelector } from '@/utils/hooks/redux';
 import { updateContent } from '@/utils/redux/reducer/docFormSlice';
+import 'highlight.js/styles/tokyo-night-dark.css';
 
 const modules = {
   syntax: { highlight: (text: string) => hljs.highlightAuto(text).value },
@@ -72,7 +73,9 @@ const modules = {
 function Content() {
   const dispatch = useAppDispatch();
   const content = useAppSelector((state) => state.docFormReducer.content);
-
+  useEffect(() => {
+    hljs.highlightAll();
+  }, [content]);
   return (
     <>
       <div className={styles.contentWrap}>
