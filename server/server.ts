@@ -17,7 +17,6 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = express();
-
   let corsOptions = {
     origin: ['*'],
     credentials: true,
