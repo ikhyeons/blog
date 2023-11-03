@@ -1,3 +1,5 @@
+'use client';
+
 import styles from '@/styles/components/view/view.module.scss';
 import styles2 from '@/styles/components/view/content.module.scss';
 
