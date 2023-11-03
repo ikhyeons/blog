@@ -1,6 +1,7 @@
 import styles from '@/styles/components/view/view.module.scss';
 import styles2 from '@/styles/components/view/content.module.scss';
-import 'highlight.js/styles/tokyo-night-dark.css';
+import 'prismjs/themes/prism-tomorrow.min.css';
+
 function Content({ data }: { data: string }) {
   return (
     <article className={styles.mainContent}>

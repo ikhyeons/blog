@@ -29,7 +29,7 @@ function Thumbnail() {
             onChange={(e) => {
               setIsSelected(true);
               const payload = new FormData();
-              console.log(e.target.files);
+
               payload.append('img', e.target.files![0]);
 
               postImage({ body: payload, token: token })

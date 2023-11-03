@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type docState = { title: string; content: string; thumbnail: number | null };
+type docState = { title: string; content: string | null; thumbnail: number | null };
 
 const initialState = {
   title: '',

@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export interface docState {
   title: string;
-  content: string;
+  content: string | null;
   ctg?: string;
   token: string;
   imageFile: string;

@@ -11,7 +11,6 @@ function EditorWrap({ id, data }: { id: number; data: any }) {
   dispatch(updateTitle(data.title));
   dispatch(updateContent(data.content));
 
-  console.log(data);
   return (
     <>
       <Title id={id} />
