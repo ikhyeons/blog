@@ -30,9 +30,13 @@ function Bottom() {
         {isLogin ? (
           <div
             onClick={() => {
-              removeCookie('login', { path: '/' });
-              removeCookie('copyToken', { path: '/' });
-              logout(cookie.copyToken);
+              removeCookie('login');
+
+              logout(cookie.copyToken)
+                .unwrap()
+                .then(() => {
+                  removeCookie('copyToken');
+                });
             }}
             className={`${styles.loginBtn} ${styles.active}`}
           >
