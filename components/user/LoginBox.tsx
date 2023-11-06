@@ -3,7 +3,6 @@ import styles from '@/styles/components/user/User.module.scss';
 import { useLoginMutation } from '@/utils/redux/reducer/sessionAPISlice';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { useCookies } from 'react-cookie';
 
 function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'main' | 'login' | 'join'>> }) {
   const [step, setStep] = useState(0);
@@ -13,8 +12,6 @@ function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'m
 
   const [email, setEmail] = useState('');
   const [password, setPW] = useState('');
-
-  const [cookies, setCookie, removeCookie] = useCookies(['token']);
 
   const [login, { isLoading: isUpdating }] = useLoginMutation();
 
@@ -90,7 +87,6 @@ function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'m
                 .unwrap()
                 .then((res) => {
                   console.log(res.token);
-                  setCookie('token', res.token!);
                   res.code === 200 ? router.push('/') : alert(res.message);
                 });
             }
