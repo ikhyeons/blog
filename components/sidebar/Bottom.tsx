@@ -31,7 +31,7 @@ function Bottom() {
           <div
             onClick={() => {
               removeCookie('login', { path: '/' });
-              logout(cookie.token);
+              logout(cookie.copyToken);
             }}
             className={`${styles.loginBtn} ${styles.active}`}
           >
