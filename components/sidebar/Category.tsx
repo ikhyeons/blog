@@ -24,7 +24,7 @@ export default Category;
 
 async function getCategoryData() {
   const fetchData = await (
-    await fetch(`https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/category`, {
+    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/category`, {
       method: 'get',
       cache: 'no-store',
     })

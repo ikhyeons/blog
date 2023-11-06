@@ -17,7 +17,7 @@ export default async function Home() {
 
 async function getDocumentData() {
   const fetchData = await (
-    await fetch(`https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/indexpost`, {
+    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/indexpost`, {
       method: 'get',
       cache: 'no-store',
     })
@@ -28,7 +28,7 @@ async function getDocumentData() {
 
 async function getGuestBookData() {
   const fetchData = await (
-    await fetch(`https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/guestBook/`, { method: 'get', cache: 'no-store' })
+    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_HOST}/guestBook/`, { method: 'get', cache: 'no-store' })
   ).json();
   const guestBookList = fetchData.guestbookData;
   return guestBookList;

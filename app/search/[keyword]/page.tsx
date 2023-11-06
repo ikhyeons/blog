@@ -26,7 +26,7 @@ export default page;
 
 async function getResultList(keyword: string) {
   const fetchData = await (
-    await fetch(`https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/search/${keyword}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_HOST}/community/search/${keyword}`, {
       method: 'get',
       cache: 'no-store',
     })

@@ -22,7 +22,7 @@ type PostsResponse = docState[];
 export type CtgList = { code: number; categoryList: { id: number; type: string; name: string; num: number }[] };
 export const postApi = createApi({
   reducerPath: 'postApi',
-  baseQuery: fetchBaseQuery({ baseUrl: `https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/community` }),
+  baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_HOST}/community` }),
   tagTypes: ['post'],
   endpoints: (build) => ({
     addPost: build.mutation<addPostReturn, Partial<docState>>({

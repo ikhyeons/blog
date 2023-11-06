@@ -25,7 +25,7 @@ export default Profile;
 
 async function getProfileData() {
   const fetchData = await (
-    await fetch(`https://${process.env.NEXT_PUBLIC_BACKEND_HOST}/bloginfo`, { method: 'get', cache: 'no-store' })
+    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_HOST}/bloginfo`, { method: 'get', cache: 'no-store' })
   ).json();
   const [profile] = fetchData.bloginfo;
   return profile;
