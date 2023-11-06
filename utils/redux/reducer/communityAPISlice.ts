@@ -33,6 +33,7 @@ export const postApi = createApi({
           headers: { authorization: token },
           method: 'POST',
           body: { ...body, categoryType: ctg },
+          credentials: 'include',
         };
       },
       invalidatesTags: [{ type: 'post' }],
@@ -45,6 +46,7 @@ export const postApi = createApi({
           headers: { authorization: token },
           method: 'PATCH',
           body: { ...body, id: id },
+          credentials: 'include',
         };
       },
       invalidatesTags: [{ type: 'post' }],
@@ -59,6 +61,7 @@ export const postApi = createApi({
           url: `post/${id}`,
           headers: { authorization: token },
           method: 'DELETE',
+          credentials: 'include',
         };
       },
       invalidatesTags: [{ type: 'post' }],
@@ -80,6 +83,7 @@ export const postApi = createApi({
           headers: { authorization: token },
           method: 'POST',
           body: { ...body },
+          credentials: 'include',
         };
       },
       invalidatesTags: [{ type: 'post' }],

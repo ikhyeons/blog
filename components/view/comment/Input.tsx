@@ -5,6 +5,7 @@ import { useCookies } from 'react-cookie';
 import RefBar from './RefBar';
 import { useAppSelector } from '@/utils/hooks/redux';
 import { useRouter } from 'next/navigation';
+import { useTokenFetch } from '@/utils/hooks/useTokenFetch';
 
 function Input({ documentData }: { documentData: any }) {
   const router = useRouter();
@@ -12,7 +13,7 @@ function Input({ documentData }: { documentData: any }) {
   const [addComment] = useAddCommentMutation();
   const [content, setContent] = useState('');
   const commentRef = useAppSelector((state) => state.commentRefReducer);
-
+  const useFetch = useTokenFetch(addComment);
   return (
     <div className={styles.inputWrap}>
       {commentRef.refOn ? <RefBar /> : null}
@@ -23,8 +24,7 @@ function Input({ documentData }: { documentData: any }) {
         onKeyUp={(e) => {
           if (e.key == 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            addComment({ token: copyToken, documentID: documentData.id, content: content, refID: commentRef.target })
-              .unwrap()
+            useFetch({ token: copyToken, documentID: documentData.id, content: content, refID: commentRef.target })
               .then(() => {
                 alert('작성 완료');
                 router.refresh();

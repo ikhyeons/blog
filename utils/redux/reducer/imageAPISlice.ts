@@ -13,6 +13,7 @@ export const imageApi = createApi({
           headers: { authorization: token },
           body,
           formdata: true,
+          credentials: 'include',
         };
       },
       invalidatesTags: [{ type: 'imageApi' }],

@@ -1,15 +1,17 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styles from '@/styles/components/new/New.module.scss';
 import { usePostImageMutation } from '@/utils/redux/reducer/imageAPISlice';
 import { setThumbnail } from '@/utils/redux/reducer/docFormSlice';
 import { useAppDispatch } from '@/utils/hooks/redux';
 import { useCookies } from 'react-cookie';
+import { useTokenFetch } from '@/utils/hooks/useTokenFetch';
 function Thumbnail() {
   const dispatch = useAppDispatch();
   const [isSelected, setIsSelected] = useState(false);
-  const [postImage, { isLoading: isUpdating }] = usePostImageMutation();
+  const [postImage] = usePostImageMutation();
   const [path, setPath] = useState('');
   const [{ token }] = useCookies();
+  const useFetch = useTokenFetch(postImage);
   return (
     <div className="">
       {isSelected ? (
@@ -32,12 +34,10 @@ function Thumbnail() {
 
               payload.append('img', e.target.files![0]);
 
-              postImage({ body: payload, token: token })
-                .unwrap()
-                .then((data) => {
-                  dispatch(setThumbnail(data.imageId));
-                  setPath(data.imagePath);
-                });
+              useFetch({ body: payload, token: token }).then((data: any) => {
+                dispatch(setThumbnail(data.imageId));
+                setPath(data.imagePath);
+              });
             }}
             style={{ display: 'none' }}
             id="imgInput"

@@ -5,6 +5,7 @@ import { updateTitle } from '@/utils/redux/reducer/docFormSlice';
 import { useAddPostMutation } from '@/utils/redux/reducer/communityAPISlice';
 import { useCookies } from 'react-cookie';
 import { useRouter } from 'next/navigation';
+import { useTokenFetch } from '@/utils/hooks/useTokenFetch';
 
 function Title({ ctg }: { ctg: string }) {
   const dispatch = useAppDispatch();
@@ -13,6 +14,7 @@ function Title({ ctg }: { ctg: string }) {
   const [addPost] = useAddPostMutation();
   const [{ copyToken }] = useCookies();
   const router = useRouter();
+  const useFetch = useTokenFetch(addPost);
 
   return (
     <div className={styles.titleBox}>
@@ -27,8 +29,7 @@ function Title({ ctg }: { ctg: string }) {
         />
         <button
           onClick={() => {
-            addPost({ ...documentInfo, ctg, token: copyToken })
-              .unwrap()
+            useFetch({ ...documentInfo, ctg, token: copyToken })
               .then(() => {
                 alert('작성 완료');
                 router.push('/');

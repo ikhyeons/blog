@@ -19,6 +19,7 @@ export const guestBookApi = createApi({
           url: `/`,
           method: 'POST',
           body: { ...body },
+          credentials: 'include',
         };
       },
       invalidatesTags: [{ type: 'guestbookApi' }],

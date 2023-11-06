@@ -89,8 +89,8 @@ function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'m
                 .unwrap()
                 .then((res) => {
                   if (res.code !== 200) alert(res.message);
-                  setCookie('login', true);
-                  setCookie('copyToken', res.token!);
+                  setCookie('login', true, { path: '/' });
+                  setCookie('copyToken', res.token!, { path: '/' });
                   router.push('/');
                 });
             }

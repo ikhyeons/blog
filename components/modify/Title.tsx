@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from '@/styles/components/new/New.module.scss';
 import { useAppDispatch, useAppSelector } from '@/utils/hooks/redux';
 import { updateTitle } from '@/utils/redux/reducer/docFormSlice';
 import { useModifyPostMutation } from '@/utils/redux/reducer/communityAPISlice';
 import { useCookies } from 'react-cookie';
-import { useSearchParams, useParams, useRouter } from 'next/navigation';
-
+import { useRouter } from 'next/navigation';
+import { useTokenFetch } from '@/utils/hooks/useTokenFetch';
 function Title({ id }: { id: number }) {
   const dispatch = useAppDispatch();
   const title = useAppSelector((state) => state.docFormReducer.title);
@@ -13,8 +13,8 @@ function Title({ id }: { id: number }) {
   const [modifyPost] = useModifyPostMutation();
   const [{ copyToken }] = useCookies();
   const router = useRouter();
+  const useFetch = useTokenFetch(modifyPost);
 
-  const params = useParams();
   return (
     <div className={styles.titleBox}>
       <div className={styles.titleHead}>
@@ -28,8 +28,7 @@ function Title({ id }: { id: number }) {
         />
         <button
           onClick={() => {
-            modifyPost({ ...documentInfo, id, token: copyToken })
-              .unwrap()
+            useFetch({ ...documentInfo, id, token: copyToken })
               .then(() => {
                 alert('수정 완료');
                 router.back();

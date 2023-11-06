@@ -1,5 +1,6 @@
 'use client';
 import styles from '@/styles/components/layout/Sidebar.module.scss';
+import { useTokenFetch } from '@/utils/hooks/useTokenFetch';
 import { useLogoutMutation } from '@/utils/redux/reducer/sessionAPISlice';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -8,12 +9,15 @@ import { useCookies } from 'react-cookie';
 function Bottom() {
   const [isLogin, setIsLogin] = useState(false);
   const [cookie, , removeCookie] = useCookies();
+  const [, , removeLoginCookie] = useCookies(['login']);
+  const [, , removeCopyTokenCookie] = useCookies(['copyToken']);
   useEffect(() => {
     if (cookie.login) setIsLogin(true);
     else setIsLogin(false);
   }, [cookie.login]);
-
   const [logout] = useLogoutMutation();
+  const useFetch = useTokenFetch(logout);
+
   return (
     <div className={styles.sidebarBottom}>
       <div className={styles.links}>
@@ -30,13 +34,10 @@ function Bottom() {
         {isLogin ? (
           <div
             onClick={() => {
-              removeCookie('login');
-
-              logout(cookie.copyToken)
-                .unwrap()
-                .then(() => {
-                  removeCookie('copyToken');
-                });
+              useFetch(cookie.copyToken).then(() => {
+                removeLoginCookie('login');
+                removeCopyTokenCookie('copyToken');
+              });
             }}
             className={`${styles.loginBtn} ${styles.active}`}
           >

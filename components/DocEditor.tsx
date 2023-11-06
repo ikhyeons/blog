@@ -19,7 +19,6 @@ function DocEditor() {
       initialEditType="wysiwyg"
       theme={'dark'}
       onChange={() => {
-        console.log(editorRef.current?.getInstance().getHTML()!);
         dispatch(updateContent(editorRef.current?.getInstance().getHTML()!));
       }}
     />

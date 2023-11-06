@@ -5,10 +5,13 @@ import { useCookies } from 'react-cookie';
 import styles from '@/styles/components/view/view.module.scss';
 import { getTimeH } from '@/utils/functions/time';
 import Link from 'next/link';
+import { useTokenFetch } from '@/utils/hooks/useTokenFetch';
 
 function HandleLine({ docId, date }: { docId: number; date: string }) {
-  const [deletePost, { isLoading: isUpdating }] = useDeletePostMutation();
+  const [deletePost] = useDeletePostMutation();
   const [{ copyToken }] = useCookies();
+  const useFetch = useTokenFetch(deletePost);
+
   return (
     <div className={styles.docInfo}>
       <Link href={`/modify/${docId}`}>
@@ -17,7 +20,7 @@ function HandleLine({ docId, date }: { docId: number; date: string }) {
 
       <span
         onClick={() => {
-          deletePost({ id: docId, token: copyToken });
+          useFetch({ id: docId, token: copyToken });
         }}
         className={styles.deleteBtn}
       >

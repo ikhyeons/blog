@@ -16,6 +16,7 @@ export default function GuestBook({
   const contentInputRef = useRef<HTMLInputElement>(null);
   const [guestV, setGuestV] = useState({ nickname: '', content: '' });
   const [addGuestBook, { isLoading: isUpdating }] = useAddGuestbookMutation();
+
   return (
     <div className={styles.guestWrap}>
       <div className={styles.ctg}>방명록</div>

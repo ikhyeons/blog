@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from '@/styles/components/layout/Header.module.scss';
 import { useAppDispatch, useAppSelector } from '@/utils/hooks/redux';
 import Link from 'next/link';
