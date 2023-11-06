@@ -13,7 +13,7 @@ function Title({ id }: { id: number }) {
   const [modifyPost] = useModifyPostMutation();
   const [{ copyToken }] = useCookies();
   const router = useRouter();
-  const useFetch = useTokenFetch(modifyPost);
+  const modifyPostFetch = useTokenFetch(modifyPost);
 
   return (
     <div className={styles.titleBox}>
@@ -28,7 +28,7 @@ function Title({ id }: { id: number }) {
         />
         <button
           onClick={() => {
-            useFetch({ ...documentInfo, id, token: copyToken })
+            modifyPostFetch({ ...documentInfo, id, token: copyToken })
               .then(() => {
                 alert('수정 완료');
                 router.back();

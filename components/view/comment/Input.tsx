@@ -13,7 +13,7 @@ function Input({ documentData }: { documentData: any }) {
   const [addComment] = useAddCommentMutation();
   const [content, setContent] = useState('');
   const commentRef = useAppSelector((state) => state.commentRefReducer);
-  const useFetch = useTokenFetch(addComment);
+  const addCommentFetch = useTokenFetch(addComment);
   return (
     <div className={styles.inputWrap}>
       {commentRef.refOn ? <RefBar /> : null}
@@ -24,7 +24,12 @@ function Input({ documentData }: { documentData: any }) {
         onKeyUp={(e) => {
           if (e.key == 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            useFetch({ token: copyToken, documentID: documentData.id, content: content, refID: commentRef.target })
+            addCommentFetch({
+              token: copyToken,
+              documentID: documentData.id,
+              content: content,
+              refID: commentRef.target,
+            })
               .then(() => {
                 alert('작성 완료');
                 router.refresh();

@@ -14,7 +14,7 @@ function Title({ ctg }: { ctg: string }) {
   const [addPost] = useAddPostMutation();
   const [{ copyToken }] = useCookies();
   const router = useRouter();
-  const useFetch = useTokenFetch(addPost);
+  const addPostFetch = useTokenFetch(addPost);
 
   return (
     <div className={styles.titleBox}>
@@ -29,7 +29,7 @@ function Title({ ctg }: { ctg: string }) {
         />
         <button
           onClick={() => {
-            useFetch({ ...documentInfo, ctg, token: copyToken })
+            addPostFetch({ ...documentInfo, ctg, token: copyToken })
               .then(() => {
                 alert('작성 완료');
                 router.push('/');

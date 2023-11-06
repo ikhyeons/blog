@@ -10,7 +10,7 @@ import { useTokenFetch } from '@/utils/hooks/useTokenFetch';
 function HandleLine({ docId, date }: { docId: number; date: string }) {
   const [deletePost] = useDeletePostMutation();
   const [{ copyToken }] = useCookies();
-  const useFetch = useTokenFetch(deletePost);
+  const deletePostFetch = useTokenFetch(deletePost);
 
   return (
     <div className={styles.docInfo}>
@@ -20,7 +20,7 @@ function HandleLine({ docId, date }: { docId: number; date: string }) {
 
       <span
         onClick={() => {
-          useFetch({ id: docId, token: copyToken });
+          deletePostFetch({ id: docId, token: copyToken });
         }}
         className={styles.deleteBtn}
       >

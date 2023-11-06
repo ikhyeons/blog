@@ -5,17 +5,19 @@ import { setThumbnail } from '@/utils/redux/reducer/docFormSlice';
 import { useAppDispatch } from '@/utils/hooks/redux';
 import { useCookies } from 'react-cookie';
 import { useTokenFetch } from '@/utils/hooks/useTokenFetch';
+import Image from 'next/image';
 function Thumbnail() {
   const dispatch = useAppDispatch();
   const [isSelected, setIsSelected] = useState(false);
   const [postImage] = usePostImageMutation();
   const [path, setPath] = useState('');
   const [{ token }] = useCookies();
-  const useFetch = useTokenFetch(postImage);
+  const postImageFetch = useTokenFetch(postImage);
   return (
     <div className="">
       {isSelected ? (
-        <img
+        <Image
+          alt="썸네일"
           onClick={() => {
             setIsSelected(false);
           }}
@@ -34,7 +36,7 @@ function Thumbnail() {
 
               payload.append('img', e.target.files![0]);
 
-              useFetch({ body: payload, token: token }).then((data: any) => {
+              postImageFetch({ body: payload, token: token }).then((data: any) => {
                 dispatch(setThumbnail(data.imageId));
                 setPath(data.imagePath);
               });

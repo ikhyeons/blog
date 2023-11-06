@@ -1,6 +1,7 @@
 import styles from '@/styles/components/view/view.module.scss';
 import HandleLine from './HandleLine';
 import ThumbUp from './ThumbUp';
+import Image from 'next/image';
 
 function Title({
   docId,
@@ -23,7 +24,7 @@ function Title({
         <ThumbUp id={docId} love={love} />
       </h1>
       {thumbnailPath ? (
-        <img width={200} height={200} src={`${thumbnailPath}`} alt="포스트 썸네일 사진" className={styles.titleImg} />
+        <Image width={200} height={200} src={`${thumbnailPath}`} alt="포스트 썸네일 사진" className={styles.titleImg} />
       ) : null}
     </div>
   );

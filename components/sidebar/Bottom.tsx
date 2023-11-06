@@ -16,7 +16,7 @@ function Bottom() {
     else setIsLogin(false);
   }, [cookie.login]);
   const [logout] = useLogoutMutation();
-  const useFetch = useTokenFetch(logout);
+  const logoutFetch = useTokenFetch(logout);
 
   return (
     <div className={styles.sidebarBottom}>
@@ -34,7 +34,7 @@ function Bottom() {
         {isLogin ? (
           <div
             onClick={() => {
-              useFetch(cookie.copyToken).then(() => {
+              logoutFetch(cookie.copyToken).then(() => {
                 removeLoginCookie('login');
                 removeCopyTokenCookie('copyToken');
               });

@@ -32,7 +32,7 @@ function DocCard({
       <Link href={`/view/${cardData.id}`}>
         <div className={styles.docCardWrap}>
           {cardData.thumbnailPath ? (
-            <img
+            <Image
               style={{ borderRadius: '10px' }}
               className={styles.thumnail}
               src={`${cardData.thumbnailPath}`}

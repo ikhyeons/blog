@@ -30,7 +30,7 @@ function DocCard({
         className={styles.docCard}
       >
         {cardData.thumbnailPath ? (
-          <img
+          <Image
             className={styles.cardImg}
             width={200}
             height={200}

@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import { useCookies } from 'react-cookie';
 
 export function useTokenFetch(func: any) {
   const [cookies, setCookie, removeCookie] = useCookies();
-
+  const [state, setState] = useState('1');
   async function actionFunction(...args: any) {
-    console.log(args);
     func(...args)
       .unwrap()
       .then((res: any) => {
