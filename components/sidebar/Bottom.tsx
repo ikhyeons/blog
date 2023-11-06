@@ -4,16 +4,14 @@ import { useLogoutMutation } from '@/utils/redux/reducer/sessionAPISlice';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import { useRouter } from 'next/navigation';
 
 function Bottom() {
-  const router = useRouter();
   const [isLogin, setIsLogin] = useState(false);
   const [cookie, , removeCookie] = useCookies();
   useEffect(() => {
-    if (cookie.token) setIsLogin(true);
+    if (cookie.login) setIsLogin(true);
     else setIsLogin(false);
-  }, [cookie.token]);
+  }, [cookie.login]);
 
   const [logout] = useLogoutMutation();
   return (
@@ -32,7 +30,7 @@ function Bottom() {
         {isLogin ? (
           <div
             onClick={() => {
-              removeCookie('token', { path: '/' });
+              removeCookie('login', { path: '/' });
               logout(cookie.token);
             }}
             className={`${styles.loginBtn} ${styles.active}`}

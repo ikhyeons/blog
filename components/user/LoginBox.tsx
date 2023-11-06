@@ -3,6 +3,7 @@ import styles from '@/styles/components/user/User.module.scss';
 import { useLoginMutation } from '@/utils/redux/reducer/sessionAPISlice';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { useCookies } from 'react-cookie';
 
 function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'main' | 'login' | 'join'>> }) {
   const [step, setStep] = useState(0);
@@ -12,6 +13,8 @@ function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'m
 
   const [email, setEmail] = useState('');
   const [password, setPW] = useState('');
+
+  const [cookies, setCookie, removeCookie] = useCookies();
 
   const [login, { isLoading: isUpdating }] = useLoginMutation();
 
@@ -52,7 +55,6 @@ function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'m
             setEmail(e.target.value);
           }}
           onKeyDown={(e) => {
-            console.log(e);
             if (e.key == 'Enter' || e.code == 'Tab') {
               e.preventDefault();
               setStep(2);
@@ -86,8 +88,9 @@ function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'m
               login({ email, password })
                 .unwrap()
                 .then((res) => {
-                  console.log(res.token);
-                  res.code === 200 ? router.push('/') : alert(res.message);
+                  if (res.code !== 200) alert(res.message);
+                  setCookie('login', true);
+                  router.push('/');
                 });
             }
           }}
