@@ -17,6 +17,7 @@ export const sessionApi = createApi({
           url: `login`,
           method: 'POST',
           body,
+          credentials: 'include',
         };
       },
       invalidatesTags: [{ type: 'session' }],
