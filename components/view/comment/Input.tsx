@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 
 function Input({ documentData }: { documentData: any }) {
   const router = useRouter();
-  const [{ token }] = useCookies();
+  const [{ copyToken }] = useCookies();
   const [addComment] = useAddCommentMutation();
   const [content, setContent] = useState('');
   const commentRef = useAppSelector((state) => state.commentRefReducer);
@@ -23,7 +23,7 @@ function Input({ documentData }: { documentData: any }) {
         onKeyUp={(e) => {
           if (e.key == 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            addComment({ token, documentID: documentData.id, content: content, refID: commentRef.target })
+            addComment({ token: copyToken, documentID: documentData.id, content: content, refID: commentRef.target })
               .unwrap()
               .then(() => {
                 alert('작성 완료');

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styles from '@/styles/components/new/New.module.scss';
 import { usePostImageMutation } from '@/utils/redux/reducer/imageAPISlice';
 import { setThumbnail } from '@/utils/redux/reducer/docFormSlice';
@@ -7,9 +7,9 @@ import { useCookies } from 'react-cookie';
 function Thumbnail() {
   const dispatch = useAppDispatch();
   const [isSelected, setIsSelected] = useState(false);
-  const [postImage, { isLoading: isUpdating }] = usePostImageMutation();
+  const [postImage] = usePostImageMutation();
   const [path, setPath] = useState('');
-  const [{ token }] = useCookies();
+  const [{ copyToken }] = useCookies();
   return (
     <div className="">
       {isSelected ? (
@@ -32,7 +32,7 @@ function Thumbnail() {
               console.log(e.target.files);
               payload.append('img', e.target.files![0]);
 
-              postImage({ body: payload, token: token })
+              postImage({ body: payload, token: copyToken })
                 .unwrap()
                 .then((data) => {
                   dispatch(setThumbnail(data.imageId));

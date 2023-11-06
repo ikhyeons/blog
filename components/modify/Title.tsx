@@ -11,7 +11,7 @@ function Title({ id }: { id: number }) {
   const title = useAppSelector((state) => state.docFormReducer.title);
   const documentInfo = useAppSelector((state) => state.docFormReducer);
   const [modifyPost] = useModifyPostMutation();
-  const [{ token }] = useCookies();
+  const [{ copyToken }] = useCookies();
   const router = useRouter();
 
   const params = useParams();
@@ -28,7 +28,7 @@ function Title({ id }: { id: number }) {
         />
         <button
           onClick={() => {
-            modifyPost({ ...documentInfo, id, token })
+            modifyPost({ ...documentInfo, id, token: copyToken })
               .unwrap()
               .then(() => {
                 alert('수정 완료');

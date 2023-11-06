@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 function HandleLine({ docId, date }: { docId: number; date: string }) {
   const [deletePost, { isLoading: isUpdating }] = useDeletePostMutation();
-  const [{ token }] = useCookies();
+  const [{ copyToken }] = useCookies();
   return (
     <div className={styles.docInfo}>
       <Link href={`/modify/${docId}`}>
@@ -17,7 +17,7 @@ function HandleLine({ docId, date }: { docId: number; date: string }) {
 
       <span
         onClick={() => {
-          deletePost({ id: docId, token: token });
+          deletePost({ id: docId, token: copyToken });
         }}
         className={styles.deleteBtn}
       >
