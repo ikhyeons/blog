@@ -88,10 +88,12 @@ function LoginBox({ setType }: { setType: React.Dispatch<React.SetStateAction<'m
               login({ email, password })
                 .unwrap()
                 .then((res) => {
-                  if (res.code !== 200) alert(res.message);
                   setCookie('login', true, { path: '/' });
                   setCookie('copyToken', res.token!, { path: '/' });
                   router.push('/');
+                })
+                .catch(({ data }) => {
+                  if (data.code != 200) alert(data.message);
                 });
             }
           }}

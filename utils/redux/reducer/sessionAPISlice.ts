@@ -5,12 +5,17 @@ export interface loginBody {
   password: string;
 }
 
+export interface returnLogin {
+  code: number;
+  message?: string;
+  token?: string;
+}
 export const sessionApi = createApi({
   reducerPath: 'sessionApi',
   baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_HOST}/session` }),
   tagTypes: ['session'],
   endpoints: (build) => ({
-    login: build.mutation<{ code: number; message?: string; token?: string }, Partial<loginBody>>({
+    login: build.mutation<returnLogin, Partial<loginBody>>({
       query(data) {
         const { ...body } = data;
         return {
