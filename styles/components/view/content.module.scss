@@ -40,6 +40,9 @@
   ul {
     padding-left: 10px;
     li {
+      p {
+        display: inline;
+      }
       margin: 8px;
       font-size: 18px;
       &::before {
