@@ -4,15 +4,14 @@ import { usePostImageMutation } from '@/utils/redux/reducer/imageAPISlice';
 import { setThumbnail } from '@/utils/redux/reducer/docFormSlice';
 import { useAppDispatch } from '@/utils/hooks/redux';
 import { useCookies } from 'react-cookie';
-import { useTokenFetch } from '@/utils/hooks/useTokenFetch';
+
 import Image from 'next/image';
 function Thumbnail() {
   const dispatch = useAppDispatch();
   const [isSelected, setIsSelected] = useState(false);
   const [postImage] = usePostImageMutation();
   const [path, setPath] = useState('');
-  const [{ copyToken }] = useCookies();
-  const postImageFetch = useTokenFetch(postImage);
+  const [{ copyToken }, setCookie, removeCookie] = useCookies();
   return (
     <div className="">
       {isSelected ? (
@@ -21,6 +20,8 @@ function Thumbnail() {
           onClick={() => {
             setIsSelected(false);
           }}
+          width={200}
+          height={200}
           className={styles.imageWrap}
           src={`${path}`}
         />
@@ -36,10 +37,17 @@ function Thumbnail() {
 
               payload.append('img', e.target.files![0]);
 
-              postImageFetch({ body: payload, token: copyToken }).then((data: any) => {
-                dispatch(setThumbnail(data.imageId));
-                setPath(data.imagePath);
-              });
+              postImage({ body: payload, token: copyToken })
+                .unwrap()
+                .then((res: any) => {
+                  if (res.code === 202) {
+                    setCookie('copyToken', res.token!, { path: '/' });
+                    const par = { body: payload, token: res!.token };
+                    postImage(par);
+                  }
+                  dispatch(setThumbnail(res.imageId));
+                  setPath(res.imagePath);
+                });
             }}
             style={{ display: 'none' }}
             id="imgInput"
