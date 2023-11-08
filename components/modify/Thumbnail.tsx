@@ -11,7 +11,7 @@ function Thumbnail() {
   const [isSelected, setIsSelected] = useState(false);
   const [postImage] = usePostImageMutation();
   const [path, setPath] = useState('');
-  const [{ token }] = useCookies();
+  const [{ copyToken }] = useCookies();
   const postImageFetch = useTokenFetch(postImage);
   return (
     <div className="">
@@ -36,7 +36,7 @@ function Thumbnail() {
 
               payload.append('img', e.target.files![0]);
 
-              postImageFetch({ body: payload, token: token }).then((data: any) => {
+              postImageFetch({ body: payload, token: copyToken }).then((data: any) => {
                 dispatch(setThumbnail(data.imageId));
                 setPath(data.imagePath);
               });
