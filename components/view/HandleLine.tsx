@@ -6,12 +6,13 @@ import styles from '@/styles/components/view/view.module.scss';
 import { getTimeH } from '@/utils/functions/time';
 import Link from 'next/link';
 import { useTokenFetch } from '@/utils/hooks/useTokenFetch';
+import { useRouter } from 'next/navigation';
 
 function HandleLine({ docId, date }: { docId: number; date: string }) {
   const [deletePost] = useDeletePostMutation();
   const [{ copyToken }] = useCookies();
   const deletePostFetch = useTokenFetch(deletePost);
-
+  const router = useRouter();
   return (
     <div className={styles.docInfo}>
       <Link href={`/modify/${docId}`}>
@@ -20,7 +21,9 @@ function HandleLine({ docId, date }: { docId: number; date: string }) {
 
       <span
         onClick={() => {
-          deletePostFetch({ id: docId, token: copyToken });
+          deletePostFetch({ id: docId, token: copyToken }).then(() => {
+            router.back();
+          });
         }}
         className={styles.deleteBtn}
       >
