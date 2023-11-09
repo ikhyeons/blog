@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
@@ -15,11 +15,13 @@ function DocEditor() {
   const dispatch = useAppDispatch();
   const content = useAppSelector((state) => state.docFormReducer.content);
   const editorRef = useRef<Editor>(null);
+  useEffect(() => {
+    editorRef.current?.getInstance().setHTML(content!);
+  }, []);
   return (
     <Editor
       ref={editorRef}
       plugins={[[codeSyntaxHighlight, { highlighter: Prism }], colorSyntax]}
-      initialValue={`${content}`}
       initialEditType="wysiwyg"
       theme={'dark'}
       height="70vh"
