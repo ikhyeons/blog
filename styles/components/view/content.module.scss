@@ -1,4 +1,9 @@
 .innerContent {
+  blockquote {
+    padding: 5px;
+    margin: 15px;
+    background: linear-gradient(135deg, rgb(100, 100, 100), rgb(40, 40, 40));
+  }
   pre {
     code {
       text-shadow: none;
