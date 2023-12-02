@@ -1,15 +1,8 @@
-import styles from '@/styles/app/resume.module.scss';
-import Profile from '@/components/resume/Profile';
-import WithoutSidebar from '@/layouts/WithoutSidebar';
-
+import React from 'react';
+import { redirect } from 'next/navigation';
 function page() {
-  return (
-    <WithoutSidebar>
-      <div className={styles.resumeWrap}>
-        <Profile />
-      </div>
-    </WithoutSidebar>
-  );
+  redirect('https://api.ikhyeons.net/resume');
+  return <div>page</div>;
 }
 
 export default page;
