@@ -8,6 +8,7 @@ export default async function Home() {
     <>
       <title>익현 blog</title>
       <meta name="description" content={'성익현의 블로그 입니다.'} />
+
       <Normal>
         <Index postList={postList} guestbookList={guestBookList} />
       </Normal>

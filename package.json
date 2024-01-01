@@ -29,6 +29,7 @@
     "mysql2": "^3.5.0",
     "next": "^13.4.10",
     "next-remove-imports": "^1.0.11",
+    "nextjs-toploader": "^1.6.4",
     "nodemon": "^2.0.22",
     "prism-react-renderer": "^2.1.0",
     "prismjs": "^1.29.0",
