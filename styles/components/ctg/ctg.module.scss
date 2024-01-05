@@ -1,6 +1,6 @@
 .docCard {
   position: relative;
-  width: 80%;
+  width: 85%;
   margin-bottom: 10px;
   padding: 10px;
   background: rgb(27, 27, 27);
@@ -8,7 +8,7 @@
 
   .docCardWrap {
     display: flex;
-
+    width: 100%;
     .thumnail {
       width: 180px;
       height: 180px;
@@ -16,25 +16,56 @@
       margin-right: 10px;
     }
 
-    .title {
-      font-size: 25px;
-      margin: 10px 0px;
-    }
-
-    .summary {
+    article {
+      flex: 1;
       overflow: hidden;
       text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
+      .title {
+        width: 100%;
+        font-size: 25px;
+        margin: 10px 0px;
+      }
+
+      .summary {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        margin-bottom: 10px;
+      }
+
+      .viewLine {
+        span {
+          margin-right: 10px;
+        }
+      }
     }
+  }
+}
 
-    .viewLine {
-      position: absolute;
-      bottom: 10px;
+@media screen and (max-width: 768px) {
+  .docCard {
+    width: 100%;
+    .docCardWrap {
+      .thumnail {
+        width: 90px;
+        height: 90px;
+      }
+      article {
+        .title {
+          font-size: 1.3rem;
+          height: 90px;
+          margin: 0;
+        }
 
-      span {
-        margin-right: 10px;
+        .viewLine {
+          bottom: 10px;
+
+          span {
+            margin-right: 10px;
+          }
+        }
       }
     }
   }

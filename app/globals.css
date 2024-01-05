@@ -1,21 +1,15 @@
-@font-face {
-  font-family: 'font1';
-  src: url(../public/Binggrae.woff) format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 * {
   margin: 0;
   padding: 0px;
   box-sizing: border-box;
   list-style: none;
-  font-family: font1;
+  font-family: 'Noto Sans KR', sans-serif;
   user-select: none;
 
   input {
-    font-family: font1;
+    font-family: 'Noto Sans KR', sans-serif;
   }
 }
 
