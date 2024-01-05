@@ -8,12 +8,12 @@ async function Category() {
       <div className={styles.ctg}>Category</div>
       <ul className={styles.ctgList}>
         {ctgList.map((data, i) => (
-          <Link key={i} href={`/${data.type}/1`}>
-            <li className={styles.ctgLi}>
+          <li className={styles.ctgLi}>
+            <Link key={i} href={`/${data.type}/1`}>
               <span>{data.name}</span>
               <span>{data.num}</span>
-            </li>
-          </Link>
+            </Link>
+          </li>
         ))}
       </ul>
     </>

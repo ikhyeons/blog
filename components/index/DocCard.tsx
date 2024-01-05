@@ -22,13 +22,13 @@ function DocCard({
 }) {
   const [increaseView] = useIncreaseViewMutation();
   return (
-    <Link href={`/view/${cardData.id}`}>
-      <li
-        onClick={() => {
-          increaseView(cardData.id);
-        }}
-        className={styles.docCard}
-      >
+    <li
+      onClick={() => {
+        increaseView(cardData.id);
+      }}
+      className={styles.docCard}
+    >
+      <Link href={`/view/${cardData.id}`}>
         {cardData.thumbnailPath ? (
           <Image
             className={styles.cardImg}
@@ -60,8 +60,8 @@ function DocCard({
           </span>
         </div>
         <p className={styles.cardTitle}>{`${cardData.title}`}</p>
-      </li>
-    </Link>
+      </Link>
+    </li>
   );
 }
 

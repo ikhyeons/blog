@@ -98,8 +98,6 @@
   }
 
   .ctgLi {
-    display: flex;
-    justify-content: space-between;
     padding: 10px;
     padding-left: 30px;
     width: 100%;
@@ -107,10 +105,7 @@
     background: var(--bg-sidebar);
     transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
     cursor: pointer;
-    :nth-child(2) {
-      margin-right: 10px;
-      color: var(--highlight);
-    }
+
     &:hover {
       box-shadow: 2px 0px 1px var(--highlight);
       transform: translate(25px, 0px);
@@ -119,6 +114,16 @@
       box-shadow: none;
       box-shadow: 1px 0px 4px rgb(255, 162, 162);
       transform: translate(0, 0);
+    }
+
+    a {
+      display: flex;
+      justify-content: space-between;
+
+      :nth-child(2) {
+        margin-right: 10px;
+        color: var(--highlight);
+      }
     }
   }
 

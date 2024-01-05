@@ -22,7 +22,9 @@ export default function GuestBook({
       <div className={styles.ctg}>방명록</div>
       <div className={styles.guestBookBox}>
         <div className={styles.inputBox}>
+          <label htmlFor="name"></label>
           <input
+            id="name"
             onKeyUp={(e) => {
               if (e.key === 'Enter') {
                 contentInputRef.current?.focus();
@@ -35,7 +37,9 @@ export default function GuestBook({
               setGuestV((prev) => ({ ...prev, nickname: e.target.value }));
             }}
           />
+          <label htmlFor="content"></label>
           <input
+            id="content"
             onKeyUp={(e) => {
               if (e.key === 'Enter') {
                 if (guestV.nickname == '' || guestV.content == '') alert('빈 값이 있습니다.');

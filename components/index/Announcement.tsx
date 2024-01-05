@@ -19,11 +19,11 @@ function Announcement({
 
       <ul className={styles.announcementBox}>
         {noticeList.map((data, i) => (
-          <Link key={i} href={`/view/${data.id}`}>
-            <li key={i} className={styles.announcementLi}>
+          <li key={i} className={styles.announcementLi}>
+            <Link key={i} href={`/view/${data.id}`}>
               {data.title}
-            </li>
-          </Link>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>
