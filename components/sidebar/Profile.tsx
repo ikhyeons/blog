@@ -15,7 +15,6 @@ async function Profile() {
       <div className={styles.name}>{profile.nickname}</div>
       <div className={styles.subName}>DrowzyDuck</div>
       <div className={styles.email}>{profile.email}</div>
-      <span className={styles.visitor}>today {profile.visit}</span>
       <PostingBtn />
     </div>
   );
