@@ -8,8 +8,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <Providers>
+        <meta name="google-site-verification" content="FDJs7Lft-q0-JR8h3ahvjI1vgP-H41XSqGvbJpJ8gQQ" />
         <body style={{ background: 'var(--bg-main)' }}>
           <Analytics />
+
           <NextTopLoader
             color="#bb00aa"
             showSpinner={true}
